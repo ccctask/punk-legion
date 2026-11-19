@@ -1,0 +1,69 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://base/radar_panel.gd" id="script"]
+
+[node name="RadarPanel" type="CanvasLayer"]
+layer = 8
+script = ExtResource("script")
+
+[node name="Screen" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="PanelContainer" parent="Screen"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -284
+
+[node name="Pad" type="MarginContainer" parent="Screen/Panel"]
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Scroll" type="ScrollContainer" parent="Screen/Panel/Pad"]
+horizontal_scroll_mode = 0
+
+[node name="Body" type="VBoxContainer" parent="Screen/Panel/Pad/Scroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 9
+
+[node name="Title" type="Label" parent="Screen/Panel/Pad/Scroll/Body"]
+text = "雷达远征站"
+theme_override_font_sizes/font_size = 26
+
+[node name="Explore" type="Button" parent="Screen/Panel/Pad/Scroll/Body"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0,42)
+text = "周边探索"
+
+[node name="World" type="Button" parent="Screen/Panel/Pad/Scroll/Body"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0,42)
+text = "世界地图"
+
+[node name="Refresh" type="Button" parent="Screen/Panel/Pad/Scroll/Body"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0,42)
+visible = false
+text = "重新连接"
+
+[node name="Status" type="Label" parent="Screen/Panel/Pad/Scroll/Body"]
+unique_name_in_owner = true
+autowrap_mode = 3
+
+[node name="Guard" type="Button" parent="Screen/Panel/Pad/Scroll/Body"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0,42)
+text = "前往基地守备"
+
+[node name="Back" type="Button" parent="Screen/Panel/Pad/Scroll/Body"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0,42)
+text = "返回基地"
+
+[node name="HTTP" type="HTTPRequest" parent="."]
+timeout = 5.0

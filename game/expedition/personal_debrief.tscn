@@ -1,0 +1,92 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://expedition/personal_debrief.gd" id="script"]
+[sub_resource type="StyleBoxFlat" id="panel"]
+bg_color=Color(0.061,0.119,0.127,1)
+content_margin_left=22
+content_margin_right=22
+content_margin_top=12
+content_margin_bottom=12
+[node name="PersonalDebrief" type="PanelContainer"]
+anchor_right=1.0
+anchor_bottom=1.0
+theme_override_styles/panel=SubResource("panel")
+script=ExtResource("script")
+[node name="Layout" type="VBoxContainer" parent="."]
+[node name="Title" type="Label" parent="Layout"]
+unique_name_in_owner = true
+theme_override_font_sizes/font_size=24
+[node name="Round" type="Label" parent="Layout"]
+unique_name_in_owner = true
+[node name="Scroll" type="ScrollContainer" parent="Layout"]
+unique_name_in_owner = true
+size_flags_vertical=3
+horizontal_scroll_mode=0
+[node name="Body" type="VBoxContainer" parent="Layout/Scroll"]
+size_flags_horizontal=3
+theme_override_constants/separation=6
+[node name="Rewards" type="Label" parent="Layout/Scroll/Body"]
+unique_name_in_owner=true
+autowrap_mode=3
+[node name="Ledger" type="GridContainer" parent="Layout/Scroll/Body"]
+unique_name_in_owner = true
+columns=4
+theme_override_constants/h_separation=16
+[node name="Material" type="Label" parent="Layout/Scroll/Body/Ledger"]
+text="资源"
+[node name="Credited" type="Label" parent="Layout/Scroll/Body/Ledger"]
+text="实际入库"
+[node name="Cost" type="Label" parent="Layout/Scroll/Body/Ledger"]
+text="出征扣除"
+[node name="Net" type="Label" parent="Layout/Scroll/Body/Ledger"]
+text="净变化"
+[node name="structureTitle" type="Label" parent="Layout/Scroll/Body/Ledger"]
+text="结构材料"
+[node name="structure" type="Label" parent="Layout/Scroll/Body/Ledger"]
+horizontal_alignment=2
+[node name="structureCost" type="Label" parent="Layout/Scroll/Body/Ledger"]
+horizontal_alignment=2
+[node name="structureNet" type="Label" parent="Layout/Scroll/Body/Ledger"]
+horizontal_alignment=2
+[node name="componentsTitle" type="Label" parent="Layout/Scroll/Body/Ledger"]
+text="通用零件"
+[node name="components" type="Label" parent="Layout/Scroll/Body/Ledger"]
+horizontal_alignment=2
+[node name="componentsCost" type="Label" parent="Layout/Scroll/Body/Ledger"]
+horizontal_alignment=2
+[node name="componentsNet" type="Label" parent="Layout/Scroll/Body/Ledger"]
+horizontal_alignment=2
+[node name="energyTitle" type="Label" parent="Layout/Scroll/Body/Ledger"]
+text="能源"
+[node name="energy" type="Label" parent="Layout/Scroll/Body/Ledger"]
+horizontal_alignment=2
+[node name="energyCost" type="Label" parent="Layout/Scroll/Body/Ledger"]
+horizontal_alignment=2
+[node name="energyNet" type="Label" parent="Layout/Scroll/Body/Ledger"]
+horizontal_alignment=2
+[node name="Voucher" type="Label" parent="Layout/Scroll/Body"]
+unique_name_in_owner = true
+[node name="Repairs" type="Label" parent="Layout/Scroll/Body"]
+unique_name_in_owner = true
+autowrap_mode=3
+[node name="Absent" type="Label" parent="Layout/Scroll/Body"]
+unique_name_in_owner=true
+autowrap_mode=3
+[node name="Toggle" type="Button" parent="Layout/Scroll/Body"]
+unique_name_in_owner = true
+toggle_mode=true
+[node name="Units" type="VBoxContainer" parent="Layout/Scroll/Body"]
+unique_name_in_owner = true
+[node name="Notice" type="Label" parent="Layout"]
+unique_name_in_owner = true
+autowrap_mode=3
+[node name="Actions" type="HBoxContainer" parent="Layout"]
+[node name="Close" type="Button" parent="Layout/Actions"]
+unique_name_in_owner = true
+size_flags_horizontal=3
+[node name="Again" type="Button" parent="Layout/Actions"]
+unique_name_in_owner = true
+text="原队再出发"
+size_flags_horizontal=3
+[node name="Leave" type="Button" parent="Layout/Actions"]
+unique_name_in_owner = true
+size_flags_horizontal=3

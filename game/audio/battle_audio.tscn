@@ -1,0 +1,16 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://audio/battle_audio.gd" id="controller"]
+[ext_resource type="AudioStream" path="res://audio/tread.wav" id="tread"]
+[ext_resource type="AudioStream" path="res://audio/steam.wav" id="steam"]
+[ext_resource type="AudioStream" path="res://audio/danger.wav" id="danger"]
+[node name="BattleAudio" type="Node"]
+script=ExtResource("controller")
+[node name="Tread" type="AudioStreamPlayer" parent="."]
+stream=ExtResource("tread")
+volume_db=-9.0
+[node name="Steam" type="AudioStreamPlayer" parent="."]
+stream=ExtResource("steam")
+volume_db=-4.0
+[node name="Danger" type="AudioStreamPlayer" parent="."]
+stream=ExtResource("danger")
+volume_db=-2.0

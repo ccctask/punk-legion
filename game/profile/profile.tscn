@@ -1,0 +1,131 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://client/page_refresh.tscn" id="page_refresh"]
+
+[ext_resource type="Script" path="res://profile/profile.gd" id="1"]
+[ext_resource type="PackedScene" path="res://profile/history.tscn" id="history"]
+[ext_resource type="PackedScene" path="res://profile/recovery.tscn" id="recovery"]
+[ext_resource type="PackedScene" path="res://profile/inventory.tscn" id="2"]
+
+[sub_resource type="SystemFont" id="Font"]
+font_names = PackedStringArray("Microsoft YaHei UI", "Noto Sans CJK SC", "sans-serif")
+
+[sub_resource type="Theme" id="Theme"]
+default_font = SubResource("Font")
+default_font_size = 18
+
+[node name="Profile" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource("Theme")
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1")
+
+[node name="Scroll" type="ScrollContainer" parent="."]
+horizontal_scroll_mode = 0
+
+[node name="Body" type="VBoxContainer" parent="Scroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Top" type="HBoxContainer" parent="Scroll/Body"]
+[node name="Title" type="Label" parent="Scroll/Body/Top"]
+text = "玩家档案"
+theme_override_font_sizes/font_size = 30
+size_flags_horizontal = 3
+[node name="Back" type="Button" parent="Scroll/Body/Top"]
+unique_name_in_owner = true
+text = "返回试车台"
+
+[node name="Endpoint" type="LineEdit" parent="Scroll/Body"]
+unique_name_in_owner = true
+placeholder_text = "开发服地址（含端口）"
+
+[node name="Auth" type="HBoxContainer" parent="Scroll/Body"]
+[node name="Account" type="LineEdit" parent="Scroll/Body/Auth"]
+unique_name_in_owner = true
+placeholder_text = "账号（3–32 位字母或数字）"
+size_flags_horizontal = 3
+[node name="Password" type="LineEdit" parent="Scroll/Body/Auth"]
+unique_name_in_owner = true
+secret = true
+placeholder_text = "密码（至少 8 位）"
+size_flags_horizontal = 3
+[node name="Login" type="Button" parent="Scroll/Body/Auth"]
+unique_name_in_owner = true
+text = "登录"
+[node name="Register" type="Button" parent="Scroll/Body/Auth"]
+unique_name_in_owner = true
+text = "注册"
+
+[node name="Summary" type="HBoxContainer" parent="Scroll/Body"]
+[node name="Message" type="Label" parent="Scroll/Body/Summary"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+text = "新玩家先注册，再进入私人基地领取今日目标。"
+[node name="Refresh" type="Button" parent="Scroll/Body/Summary"]
+unique_name_in_owner = true
+text = "刷新"
+
+[node name="Base" type="Button" parent="Scroll/Body/Summary"]
+unique_name_in_owner = true
+text = "私人基地 · 首玩与日常"
+[node name="Friends" type="Button" parent="Scroll/Body/Summary"]
+unique_name_in_owner = true
+text = "好友与援军"
+
+[node name="Record" type="VBoxContainer" parent="Scroll/Body"]
+unique_name_in_owner = true
+theme_override_constants/separation = 10
+
+[node name="Owned" type="Button" parent="Scroll/Body/Record"]
+unique_name_in_owner=true
+text="自有机体工坊"
+
+[node name="Robots" type="OptionButton" parent="Scroll/Body/Record"]
+unique_name_in_owner = true
+[node name="Identity" type="Label" parent="Scroll/Body/Record"]
+unique_name_in_owner = true
+
+[node name="Naming" type="HBoxContainer" parent="Scroll/Body/Record"]
+[node name="RobotName" type="LineEdit" parent="Scroll/Body/Record/Naming"]
+unique_name_in_owner = true
+placeholder_text = "新的机体名称"
+size_flags_horizontal = 3
+[node name="Rename" type="Button" parent="Scroll/Body/Record/Naming"]
+unique_name_in_owner = true
+text = "保存名称"
+
+[node name="Tasks" type="HBoxContainer" parent="Scroll/Body/Record"]
+[node name="Kind" type="OptionButton" parent="Scroll/Body/Record/Tasks"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+[node name="Assign" type="Button" parent="Scroll/Body/Record/Tasks"]
+unique_name_in_owner = true
+text = "登记任务"
+tooltip_text = "手动登记机体占用。进入私人基地的探索区域可实际出击。"
+[node name="Finish" type="Button" parent="Scroll/Body/Record/Tasks"]
+unique_name_in_owner = true
+text = "完成"
+[node name="Cancel" type="Button" parent="Scroll/Body/Record/Tasks"]
+unique_name_in_owner = true
+text = "取消任务"
+
+[node name="HTTP" type="HTTPRequest" parent="."]
+unique_name_in_owner = true
+timeout = 6.0
+accept_gzip = false
+
+[node name="History" parent="Scroll/Body/Record" instance=ExtResource("history")]
+unique_name_in_owner = true
+
+[node name="Recovery" parent="Scroll/Body/Record" instance=ExtResource("recovery")]
+unique_name_in_owner = true
+
+[node name="Inventory" parent="Scroll/Body" instance=ExtResource("2")]
+unique_name_in_owner = true
+
+[node name="PageRefresh" parent="." instance=ExtResource("page_refresh")]

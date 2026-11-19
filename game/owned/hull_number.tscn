@@ -1,0 +1,26 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://owned/hull_number.gd" id="editor"]
+[node name="HullNumber" type="VBoxContainer"]
+script = ExtResource("editor")
+[node name="Edit" type="Button" parent="."]
+text = "编辑机身号"
+[node name="Fields" type="VBoxContainer" parent="."]
+visible = false
+[node name="Input" type="LineEdit" parent="Fields"]
+unique_name_in_owner = true
+placeholder_text = "输入两位数字，留空可清除"
+virtual_keyboard_type = 2
+[node name="Hint" type="Label" parent="Fields"]
+unique_name_in_owner = true
+autowrap_mode = 3
+[node name="Actions" type="HBoxContainer" parent="Fields"]
+[node name="Clear" type="Button" parent="Fields/Actions"]
+unique_name_in_owner = true
+text = "预览清除"
+[node name="Save" type="Button" parent="Fields/Actions"]
+unique_name_in_owner = true
+text = "保存机身号"
+[node name="Cancel" type="Button" parent="Fields/Actions"]
+unique_name_in_owner = true
+text = "取消"

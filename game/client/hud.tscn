@@ -1,0 +1,112 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://audio/volume.tscn" id="volume"]
+
+[sub_resource type="SystemFont" id="Font"]
+font_names = PackedStringArray("Microsoft YaHei UI", "Noto Sans CJK SC", "sans-serif")
+
+[sub_resource type="StyleBoxFlat" id="Panel"]
+bg_color = Color(0.039, 0.086, 0.094, 0.95)
+content_margin_left = 16.0
+content_margin_right = 16.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+border_width_bottom = 1
+border_color = Color(0.23, 0.36, 0.34, 1)
+
+[sub_resource type="StyleBoxFlat" id="Button"]
+bg_color = Color(0.16, 0.29, 0.28, 1)
+content_margin_left = 16.0
+content_margin_right = 16.0
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_left = 5
+corner_radius_bottom_right = 5
+
+[sub_resource type="Theme" id="Theme"]
+default_font = SubResource("Font")
+default_font_size = 16
+Button/styles/normal = SubResource("Button")
+PanelContainer/styles/panel = SubResource("Panel")
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="TopBar" type="PanelContainer" parent="."]
+anchor_right = 1.0
+offset_bottom = 56.0
+theme = SubResource("Theme")
+
+[node name="Row" type="HBoxContainer" parent="TopBar"]
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="TopBar/Row"]
+text = "PUNK LEGION"
+theme_override_colors/font_color = Color(1, 0.79, 0.36, 1)
+theme_override_font_sizes/font_size = 22
+
+[node name="Divider" type="VSeparator" parent="TopBar/Row"]
+
+[node name="Range" type="Label" parent="TopBar/Row"]
+text = "机库试车台"
+size_flags_horizontal = 3
+
+[node name="Home" type="Button" parent="TopBar/Row"]
+unique_name_in_owner=true
+visible=false
+text="返回私人基地"
+
+[node name="Workshop" type="Button" parent="TopBar/Row"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(76, 42)
+text = "装配台"
+
+[node name="Profile" type="Button" parent="TopBar/Row"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 42)
+text = "档案"
+
+[node name="HostInput" type="LineEdit" parent="TopBar/Row"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 40)
+text = "127.0.0.1"
+placeholder_text = "服务端地址"
+virtual_keyboard_type = 0
+
+[node name="Join" type="Button" parent="TopBar/Row"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(76, 42)
+text = "连接"
+
+[node name="Leave" type="Button" parent="TopBar/Row"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(76, 42)
+text = "断开"
+
+[node name="BottomBar" type="PanelContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -48.0
+theme = SubResource("Theme")
+
+[node name="Row" type="HBoxContainer" parent="BottomBar"]
+theme_override_constants/separation = 14
+
+[node name="SeatLabel" type="Label" parent="BottomBar/Row"]
+unique_name_in_owner = true
+theme_override_colors/font_color = Color(1, 0.80, 0.40, 1)
+text = "等待分配"
+
+[node name="StatusLabel" type="Label" parent="BottomBar/Row"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+text_overrun_behavior = 3
+text = "正在连接"
+
+[node name="Hint" type="Label" parent="BottomBar/Row"]
+text = "点击场地，移动自己的机器人"
+[node name="Exercise" type="Button" parent="BottomBar/Row"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(145, 40)
+text = "双人演习 · 准备"
+
+[node name="EffectsVolume" parent="BottomBar/Row" instance=ExtResource("volume")]

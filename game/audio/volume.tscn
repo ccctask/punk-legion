@@ -1,0 +1,6 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://audio/volume.gd" id="volume"]
+[node name="EffectsVolume" type="OptionButton"]
+custom_minimum_size=Vector2(108,40)
+tooltip_text="战场音效音量"
+script=ExtResource("volume")

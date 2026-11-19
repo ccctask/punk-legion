@@ -1,0 +1,22 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://base/production_panel.gd" id="1"]
+[node name="Economy" type="VBoxContainer"]
+script = ExtResource("1")
+theme_override_constants/separation = 7
+[node name="Lines" type="Label" parent="."]
+unique_name_in_owner = true
+autowrap_mode = 2
+[node name="Refresh" type="Button" parent="."]
+unique_name_in_owner = true
+text = "刷新产量"
+[node name="Claim" type="Button" parent="."]
+unique_name_in_owner = true
+text = "领取产出"
+[node name="Research" type="OptionButton" parent="."]
+unique_name_in_owner = true
+[node name="Cost" type="Label" parent="."]
+unique_name_in_owner = true
+autowrap_mode = 3
+[node name="Study" type="Button" parent="."]
+unique_name_in_owner = true
+text = "研究"

@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3]
+[ext_resource type="Script" path="res://base/repair_bay.gd" id="script"]
+[sub_resource type="SystemFont" id="font"]
+font_names = PackedStringArray("Microsoft YaHei UI","Noto Sans CJK SC","sans-serif")
+[sub_resource type="Theme" id="theme"]
+default_font = SubResource("font")
+default_font_size = 19
+[node name="RepairBay" type="CanvasLayer"]
+layer = 9
+script = ExtResource("script")
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.062,0.115,0.123,1)
+theme = SubResource("theme")
+[node name="Panel" type="VBoxContainer" parent="Background"]
+anchor_left = 0.075
+anchor_right = 0.925
+anchor_bottom = 1.0
+offset_top = 18
+offset_bottom = -18
+theme_override_constants/separation = 10
+[node name="Header" type="HBoxContainer" parent="Background/Panel"]
+[node name="Title" type="Label" parent="Background/Panel/Header"]
+text = "维修工位"
+theme_override_font_sizes/font_size = 26
+size_flags_horizontal = 3
+[node name="Back" type="Button" parent="Background/Panel/Header"]
+unique_name_in_owner = true
+text = "返回基地"
+[node name="Scroll" type="ScrollContainer" parent="Background/Panel"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+[node name="Body" type="VBoxContainer" parent="Background/Panel/Scroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+[node name="Capacity" type="Label" parent="Background/Panel/Scroll/Body"]
+unique_name_in_owner = true
+autowrap_mode = 3
+text = "正在读取工位…"
+[node name="Queue" type="Label" parent="Background/Panel/Scroll/Body"]
+unique_name_in_owner = true
+autowrap_mode = 3
+[node name="Damaged" type="Label" parent="Background/Panel/Scroll/Body"]
+text = "待修机体"
+[node name="Robot" type="OptionButton" parent="Background/Panel/Scroll/Body"]
+unique_name_in_owner = true
+[node name="Quote" type="Label" parent="Background/Panel/Scroll/Body"]
+unique_name_in_owner = true
+autowrap_mode = 3
+[node name="Repair" type="Button" parent="Background/Panel/Scroll/Body"]
+unique_name_in_owner = true
+text = "送修所选机体"
+disabled = true
+[node name="Status" type="Label" parent="Background/Panel/Scroll/Body"]
+unique_name_in_owner = true
+autowrap_mode = 3
+[node name="Refresh" type="Button" parent="Background/Panel/Scroll/Body"]
+unique_name_in_owner = true
+visible = false
+text = "重新连接"
+[node name="HTTP" type="HTTPRequest" parent="."]
+timeout = 6.0

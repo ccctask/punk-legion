@@ -1,0 +1,32 @@
+services:
+  sampler:
+    image: python:3.13-alpine
+    command: ["python", "-B", "-u", "/app/health.py", "run"]
+    restart: unless-stopped
+    read_only: true
+    volumes:
+      - ../tools/operations/health.py:/app/health.py:ro
+      - history:/history
+      - room:/queues/room:ro
+      - solo:/queues/solo:ro
+      - party:/queues/party:ro
+      - camp:/queues/camp:ro
+    networks: [game]
+volumes:
+  history:
+  room:
+    external: true
+    name: ${HEALTH_GAME_PROJECT:-punk-private-beta}_room-results
+  solo:
+    external: true
+    name: ${HEALTH_GAME_PROJECT:-punk-private-beta}_solo-missions
+  party:
+    external: true
+    name: ${HEALTH_GAME_PROJECT:-punk-private-beta}_party-missions
+  camp:
+    external: true
+    name: ${HEALTH_GAME_PROJECT:-punk-private-beta}_camp-battles
+networks:
+  game:
+    external: true
+    name: ${HEALTH_GAME_PROJECT:-punk-private-beta}_default

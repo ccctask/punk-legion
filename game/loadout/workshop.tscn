@@ -1,0 +1,128 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/steam_crawler/robot.tscn" id="1"]
+[ext_resource type="Script" path="res://loadout/workshop.gd" id="2"]
+
+[sub_resource type="Environment" id="Env"]
+background_mode = 1
+background_color = Color(0.06, 0.13, 0.14, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.88, 0.94, 1, 1)
+ambient_light_energy = 0.65
+
+[sub_resource type="StandardMaterial3D" id="Mat"]
+albedo_color = Color(0.2, 0.38, 0.35, 1)
+
+[sub_resource type="BoxMesh" id="Stage"]
+size = Vector3(3.8, 0.18, 3.2)
+material = SubResource("Mat")
+
+[node name="Workshop" type="Node3D"]
+script = ExtResource("2")
+
+[node name="World" type="WorldEnvironment" parent="."]
+environment = SubResource("Env")
+
+[node name="Platform" type="MeshInstance3D" parent="."]
+position = Vector3(0,-0.09,0)
+mesh = SubResource("Stage")
+
+[node name="Robot" parent="." instance=ExtResource("1")]
+
+[node name="Light" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-50,-36,0)
+light_energy = 1.1
+shadow_enabled = true
+
+[node name="Camera" type="Camera3D" parent="."]
+position = Vector3(4.5,3.8,-6)
+projection = 1
+size = 4.4
+current = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="PanelContainer" parent="HUD"]
+offset_left = 20.0
+offset_top = 20.0
+
+[node name="Margin" type="MarginContainer" parent="HUD/Panel"]
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Controls" type="VBoxContainer" parent="HUD/Panel/Margin"]
+custom_minimum_size = Vector2(220, 0)
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="HUD/Panel/Margin/Controls"]
+text = "机器人装配台"
+theme_override_font_sizes/font_size = 22
+
+[node name="Hull" type="OptionButton" parent="HUD/Panel/Margin/Controls"]
+unique_name_in_owner=true
+
+[node name="Sensor" type="OptionButton" parent="HUD/Panel/Margin/Controls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0,42)
+
+[node name="Tool" type="OptionButton" parent="HUD/Panel/Margin/Controls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0,42)
+
+[node name="Power" type="HBoxContainer" parent="HUD/Panel/Margin/Controls"]
+
+[node name="Core" type="OptionButton" parent="HUD/Panel/Margin/Controls/Power"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0,42)
+
+[node name="Utility" type="OptionButton" parent="HUD/Panel/Margin/Controls/Power"]
+unique_name_in_owner=true
+custom_minimum_size=Vector2(0,42)
+
+[node name="Armor" type="OptionButton" parent="HUD/Panel/Margin/Controls"]
+unique_name_in_owner=true
+custom_minimum_size=Vector2(0,42)
+
+[node name="Survey" type="OptionButton" parent="HUD/Panel/Margin/Controls"]
+unique_name_in_owner=true
+visible=false
+
+[node name="Cost" type="Label" parent="HUD/Panel/Margin/Controls"]
+unique_name_in_owner = true
+
+[node name="Problem" type="Label" parent="HUD/Panel/Margin/Controls"]
+unique_name_in_owner = true
+autowrap_mode = 3
+theme_override_colors/font_color = Color(1,0.63,0.42,1)
+
+[node name="Squad" type="Label" parent="HUD/Panel/Margin/Controls"]
+unique_name_in_owner = true
+theme_override_colors/font_color = Color(1,0.84,0.52,1)
+
+[node name="Buttons" type="HBoxContainer" parent="HUD/Panel/Margin/Controls"]
+
+[node name="Back" type="Button" parent="HUD/Panel/Margin/Controls/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0,44)
+size_flags_horizontal = 3
+text = "返回试车台"
+
+[node name="Launch" type="Button" parent="HUD/Panel/Margin/Controls/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0,44)
+size_flags_horizontal = 3
+text = "出击试战"
+
+[node name="Diagnostics" type="HBoxContainer" parent="HUD/Panel/Margin/Controls"]
+
+[node name="Baseline" type="Button" parent="HUD/Panel/Margin/Controls/Diagnostics"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+text = "24 台战斗诊断"
+
+[node name="BenchShadows" type="CheckButton" parent="HUD/Panel/Margin/Controls/Diagnostics"]
+unique_name_in_owner = true
+button_pressed = true
+text = "阴影"

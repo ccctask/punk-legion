@@ -1,0 +1,3 @@
+- [x] 1.1 冻结签名 1023，部署独立新库，核对包、窗口与服务。[冻结与联测入口](verification/release.md)
+- [x] 1.2 安卓新账号满编接敌，两轮实际呈现、单选/全队触控、服务端执行与个人结算。见[两场与同机交叉原始证据](verification/android/README.md)。
+- [x] 1.3 主代理复核冻结项、APK、画面、实际指令与帧数据，更新试玩说明并清理专项资源。 [主验](verification/root-review.md)。

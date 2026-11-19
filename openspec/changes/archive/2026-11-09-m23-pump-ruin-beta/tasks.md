@@ -1,0 +1,3 @@
+- [x] 1.1 冻结已验 M18 及已通过的 M03 改动，签名，独立新库部署，检查端口、服务与包内字段。见[签名](verification/signed.json)、[包内场景与模型](verification/packaged.json)、[十二项空库](verification/empty.json)、[固定测试窗口](verification/window.json)及[五路实连](verification/transport.log)。
+- [x] 1.2 安卓从基地进入公开地图，与桌面队友真实完成两阀和各自撤离，核对个人奖及再次查看当日额度。见[跨端分阀实录与两份收据](verification/android/README.md)。
+- [x] 1.3 主代理对照准备报价、战斗时间线、当日计数、锈轨隔离，切换并释放旧服务和测试进程。见[主验](verification/root-acceptance.md)。

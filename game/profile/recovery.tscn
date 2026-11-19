@@ -1,0 +1,27 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://profile/recovery.gd" id="s"]
+[node name="Recovery" type="VBoxContainer"]
+script=ExtResource("s")
+[node name="Open" type="Button" parent="."]
+text="检修与回收"
+[node name="Details" type="VBoxContainer" parent="."]
+visible=false
+[node name="Summary" type="Label" parent="Details"]
+autowrap_mode=3
+[node name="Queue" type="Button" parent="Details"]
+text="查看维修工位"
+[node name="Actions" type="HBoxContainer" parent="Details"]
+[node name="Repair" type="Button" parent="Details/Actions"]
+text="入列维修"
+[node name="Relief" type="Button" parent="Details/Actions"]
+text="申请救援"
+[node name="Recycle" type="Button" parent="Details/Actions"]
+text="回收预览"
+[node name="Retry" type="Button" parent="Details/Actions"]
+text="重试待确认操作"
+[node name="Events" type="Label" parent="Details"]
+autowrap_mode=3
+[node name="Confirm" type="ConfirmationDialog" parent="."]
+title="确认回收机体"
+ok_button_text="确认回收"
+cancel_button_text="保留机体"

@@ -1,0 +1,4 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://expedition/tests/zone_art_bench.gd" id="bench"]
+[node name="ZoneEvidence" type="Node"]
+script=ExtResource("bench")

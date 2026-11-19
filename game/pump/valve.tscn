@@ -1,0 +1,16 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://pump/landmark_mesh.gd" id="1"]
+
+[node name="Valve" type="Node3D"]
+
+[node name="Body" type="MeshInstance3D" parent="."]
+scale = Vector3(1.5, 1.5, 1.5)
+script = ExtResource("1")
+module = "Fuel"
+
+[node name="Wheel" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.2, 0.75)
+scale = Vector3(0.78, 0.78, 0.78)
+script = ExtResource("1")
+module = "Coil"

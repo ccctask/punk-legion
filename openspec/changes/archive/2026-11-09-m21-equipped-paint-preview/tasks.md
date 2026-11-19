@@ -1,0 +1,2 @@
+- [x] 1.1 工坊与商店接通完整外观，开发者复验跨机体、空槽及返回。见[客户端实物验收](verification/client/README.md)。
+- [x] 1.2 主代理在正常界面入口复验装配与试穿权益，核对安卓触控证据、账本与资源回收。[独立主验](verification/root-review.md) · [安卓记录](verification/android/README.md)

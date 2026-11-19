@@ -1,0 +1,3 @@
+- [x] 1.1 Freeze M20 sources, sign APK and deploy isolated local services. [发行证据](verification/release/README.md)
+- [x] 1.2 Confirm the quote, eligibility and actual payment on an Android emulator and reconcile new player stock. [Android evidence](verification/android/README.md)
+- [x] 1.3 Verify package identity and service bindings, publish the entry and release test processes. [主验](verification/root-review.md)

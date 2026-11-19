@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/base_art/PL_PuffSentry.glb" id="glb"]
+[ext_resource type="Script" path="res://assets/base_art/turret.gd" id="script"]
+
+[node name="PL_PuffSentry" type="Node3D"]
+script = ExtResource("script")
+
+[node name="Model" parent="." instance=ExtResource("glb")]
+rotation = Vector3(0,3.14159265,0)

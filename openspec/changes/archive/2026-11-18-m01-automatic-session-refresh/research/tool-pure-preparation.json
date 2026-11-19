@@ -1,0 +1,61 @@
+{
+  "scope": "development pure fixture/registration/closure only; NOT Godot parse or actual HTTP",
+  "resource_count": 0,
+  "gd_functions": [
+    "test_activation_and_busy_due_merge_start_a_real_get",
+    "test_focus_resume_during_real_held_get_queue_one_followup",
+    "test_hidden_cancel_reopen_invalidates_old_settled_and_defer",
+    "test_real_failure_recovers_automatically_and_401_stops_reads",
+    "test_free_component_cancels_real_http_and_never_restarts",
+    "test_configure_new_context_rejects_old_completion"
+  ],
+  "expected_gut_cases": 6,
+  "fixture_pure_controls": [
+    [
+      "ok",
+      1,
+      200
+    ],
+    [
+      "fail-once",
+      1,
+      503
+    ],
+    [
+      "fail-once",
+      2,
+      200
+    ],
+    [
+      "unauthorized",
+      1,
+      401
+    ],
+    [
+      "rejected",
+      "unknown",
+      1
+    ],
+    [
+      "rejected",
+      "ok",
+      true
+    ],
+    [
+      "rejected",
+      "ok",
+      0
+    ]
+  ],
+  "python_compile": true,
+  "component_closure_observed_unfrozen": {
+    "client/page_refresh.tscn": "c2f0e6b669fc01cb4321e2e332a990abbdb70ddc0959a9c4f3580cb5fe0e741a",
+    "client/page_refresh.gd": "2bd521dd56321b77b2937e6b0385963714ad048ad8549ef72b0a13505714ada5"
+  },
+  "tool_sha256": {
+    "http_fixture.py": "c94577ee68d325bc5efc988a6f6c5c4dd279f2bc956b80398b401c8517ab96ca",
+    "run.py": "9dd83ef39abaead8fa8311a25b7b7e8e677323f3e62bf50f140f44e9a6032227",
+    "test_refresh.gd": "cd9cc2039b0695757c7b4145462c08046ffdf85d6db01f3b775c45268a294667"
+  },
+  "formal_prepare_run": "not executed; requires final production source and root accurate gate"
+}

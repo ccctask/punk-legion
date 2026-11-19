@@ -1,0 +1,124 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://beta/entry.gd" id="home"]
+[ext_resource type="PackedScene" path="res://audio/volume.tscn" id="volume"]
+[ext_resource type="PackedScene" path="res://beta/account_recovery.tscn" id="recovery"]
+[sub_resource type="StyleBoxFlat" id="panel"]
+bg_color=Color(0.055,0.11,0.12,0.98)
+corner_radius_top_left=8
+corner_radius_top_right=8
+corner_radius_bottom_left=8
+corner_radius_bottom_right=8
+content_margin_left=14
+content_margin_right=14
+content_margin_top=10
+content_margin_bottom=10
+[node name="BaseEntry" type="Node"]
+script=ExtResource("home")
+[node name="World" type="Node" parent="."]
+[node name="HTTP" type="HTTPRequest" parent="."]
+timeout=6.0
+[node name="Overlay" type="CanvasLayer" parent="."]
+layer=12
+[node name="Controls" type="Control" parent="Overlay"]
+anchor_right=1.0
+anchor_bottom=1.0
+mouse_filter=2
+[node name="Menu" type="Button" parent="Overlay/Controls"]
+unique_name_in_owner=true
+offset_left=12
+offset_top=10
+offset_right=130
+offset_bottom=49
+text="基地菜单"
+[node name="Panel" type="PanelContainer" parent="Overlay/Controls"]
+unique_name_in_owner=true
+offset_left=12
+offset_top=56
+anchor_bottom=1.0
+offset_bottom=-12
+offset_right=311
+theme_override_styles/panel=SubResource("panel")
+[node name="Scroll" type="ScrollContainer" parent="Overlay/Controls/Panel"]
+unique_name_in_owner=true
+horizontal_scroll_mode=0
+follow_focus=true
+[node name="Stack" type="VBoxContainer" parent="Overlay/Controls/Panel/Scroll"]
+size_flags_horizontal=3
+theme_override_constants/separation=6
+[node name="Title" type="Label" parent="Overlay/Controls/Panel/Scroll/Stack"]
+unique_name_in_owner=true
+text="私人基地"
+theme_override_font_sizes/font_size=23
+[node name="Info" type="Label" parent="Overlay/Controls/Panel/Scroll/Stack"]
+unique_name_in_owner=true
+autowrap_mode=3
+text="正在联系档案服务…"
+[node name="Form" type="VBoxContainer" parent="Overlay/Controls/Panel/Scroll/Stack"]
+unique_name_in_owner=true
+
+[node name="Recovery" parent="Overlay/Controls/Panel/Scroll/Stack" instance=ExtResource("recovery")]
+unique_name_in_owner=true
+
+[node name="Naming" type="VBoxContainer" parent="Overlay/Controls/Panel/Scroll/Stack"]
+unique_name_in_owner=true
+
+[node name="Retry" type="Button" parent="Overlay/Controls/Panel/Scroll/Stack"]
+unique_name_in_owner=true
+text="重试连接"
+[node name="Options" type="VBoxContainer" parent="Overlay/Controls/Panel/Scroll/Stack"]
+unique_name_in_owner=true
+
+[node name="Account" type="LineEdit" parent="Overlay/Controls/Panel/Scroll/Stack/Form"]
+unique_name_in_owner=true
+placeholder_text="指挥官账号（3–32 位）"
+max_length=32
+[node name="Password" type="LineEdit" parent="Overlay/Controls/Panel/Scroll/Stack/Form"]
+unique_name_in_owner=true
+placeholder_text="密码（至少 8 位）"
+secret=true
+max_length=128
+[node name="Login" type="Button" parent="Overlay/Controls/Panel/Scroll/Stack/Form"]
+unique_name_in_owner=true
+text="登录已有基地"
+[node name="Register" type="Button" parent="Overlay/Controls/Panel/Scroll/Stack/Form"]
+unique_name_in_owner=true
+text="注册并进入基地"
+[node name="Forgot" type="Button" parent="Overlay/Controls/Panel/Scroll/Stack/Form"]
+unique_name_in_owner=true
+text="用恢复码找回基地"
+
+[node name="RobotName" type="LineEdit" parent="Overlay/Controls/Panel/Scroll/Stack/Naming"]
+unique_name_in_owner=true
+placeholder_text="机体名（1–24 字）"
+max_length=24
+[node name="Rename" type="Button" parent="Overlay/Controls/Panel/Scroll/Stack/Naming"]
+unique_name_in_owner=true
+text="确认机体名称"
+[node name="Resume" type="Button" parent="Overlay/Controls/Panel/Scroll/Stack/Options"]
+unique_name_in_owner=true
+text="返回基地"
+[node name="EffectsVolume" parent="Overlay/Controls/Panel/Scroll/Stack/Options" instance=ExtResource("volume")]
+unique_name_in_owner=true
+[node name="Dossier" type="Button" parent="Overlay/Controls/Panel/Scroll/Stack/Options"]
+unique_name_in_owner=true
+text="指挥官档案与机库"
+[node name="Range" type="Button" parent="Overlay/Controls/Panel/Scroll/Stack/Options"]
+unique_name_in_owner=true
+text="前往试车台"
+[node name="Diagnostic" type="Button" parent="Overlay/Controls/Panel/Scroll/Stack/Options"]
+unique_name_in_owner=true
+text="连接诊断、版本与反馈"
+[node name="Codes" type="Button" parent="Overlay/Controls/Panel/Scroll/Stack/Options"]
+unique_name_in_owner=true
+text="账号恢复码"
+[node name="Switch" type="Button" parent="Overlay/Controls/Panel/Scroll/Stack/Options"]
+unique_name_in_owner=true
+text="切换指挥官"
+[node name="Commander" type="Label" parent="Overlay/Controls"]
+unique_name_in_owner=true
+visible=false
+offset_left=15
+offset_top=54
+offset_right=305
+autowrap_mode=3
+theme_override_constants/outline_size=5

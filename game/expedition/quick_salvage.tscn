@@ -1,0 +1,23 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://expedition/quick_salvage.gd" id="script"]
+[node name="QuickSalvage" type="VBoxContainer"]
+script = ExtResource("script")
+[node name="Expand" type="Button" parent="."]
+unique_name_in_owner = true
+toggle_mode = true
+text = "锈轨外围 · 快速回收"
+[node name="Options" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+[node name="Notice" type="Label" parent="Options"]
+unique_name_in_owner = true
+visible = false
+autowrap_mode = 3
+[node name="Terms" type="Label" parent="Options"]
+unique_name_in_owner = true
+autowrap_mode = 3
+[node name="Robot" type="OptionButton" parent="Options"]
+unique_name_in_owner = true
+fit_to_longest_item = false
+[node name="Confirm" type="Button" parent="Options"]
+unique_name_in_owner = true

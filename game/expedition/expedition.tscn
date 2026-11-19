@@ -1,0 +1,206 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://battle/role_select.tscn" id="rolebar"]
+[ext_resource type="PackedScene" path="res://audio/battle_audio.tscn" id="audio"]
+[ext_resource type="Script" path="res://expedition/expedition.gd" id="1"]
+[ext_resource type="Script" path="res://expedition/map.gd" id="2"]
+[ext_resource type="PackedScene" path="res://assets/salvage/yard.tscn" id="yard"]
+[ext_resource type="PackedScene" path="res://party/lobby.tscn" id="party_lobby"]
+[ext_resource type="PackedScene" path="res://expedition/quick_salvage.tscn" id="quick"]
+[ext_resource type="PackedScene" path="res://expedition/personal_debrief.tscn" id="debrief"]
+[sub_resource type="Environment" id="Day"]
+background_mode = 1
+background_color = Color(0.13,0.18,0.18,1)
+ambient_light_source = 2
+ambient_light_color = Color(0.88,0.88,0.79,1)
+ambient_light_energy = 0.7
+
+[sub_resource type="Shader" id="FloorShader"]
+code = "shader_type spatial;
+varying vec3 wp;
+void vertex(){wp=(MODEL_MATRIX*vec4(VERTEX,1)).xyz;}
+void fragment(){ vec2 g=abs(fract(wp.xz/4.0+0.5)-0.5);float line=1.0-smoothstep(0.006,0.018,min(g.x,g.y));float gravel=sin(wp.x*0.23+cos(wp.z*0.4))*0.016;ALBEDO=mix(vec3(0.18,0.265,0.22)+gravel,vec3(0.23,0.30,0.24),line);ROUGHNESS=1.0;}"
+[sub_resource type="ShaderMaterial" id="FloorMat"]
+shader = SubResource("FloorShader")
+[sub_resource type="BoxMesh" id="Floor"]
+material = SubResource("FloorMat")
+size = Vector3(73,0.45,51)
+[node name="Expedition" type="Node3D"]
+script = ExtResource("1")
+use_network_motion = true
+[node name="Camera" type="Camera3D" parent="."]
+projection = 1
+size = 17
+environment = SubResource("Day")
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-54,-32,0)
+light_color = Color(1.0,0.92,0.78,1)
+light_energy = 0.96
+shadow_enabled = true
+[node name="Ground" type="MeshInstance3D" parent="."]
+position = Vector3(0,-0.245,0)
+mesh = SubResource("Floor")
+[node name="Field" parent="." instance=ExtResource("yard")]
+[node name="Units" type="Node3D" parent="."]
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 8
+[node name="LobbyReadBanner" type="PanelContainer" parent="HUD"]
+unique_name_in_owner=true
+visible=false
+anchor_left=0.15
+anchor_right=0.85
+offset_top=4.0
+[node name="LobbyReadStatus" type="Label" parent="HUD/LobbyReadBanner"]
+unique_name_in_owner=true
+autowrap_mode=3
+theme_override_font_sizes/font_size=18
+text="正在读取队伍…"
+[node name="Lobby" type="PanelContainer" parent="HUD"]
+unique_name_in_owner = true
+anchor_left = 0.15
+anchor_top = 0.08
+anchor_right = 0.85
+anchor_bottom = 0.92
+[node name="Scroll" type="ScrollContainer" parent="HUD/Lobby"]
+horizontal_scroll_mode = 0
+[node name="Body" type="VBoxContainer" parent="HUD/Lobby/Scroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+[node name="Title" type="Label" parent="HUD/Lobby/Scroll/Body"]
+text = "锈轨回收场"
+theme_override_font_sizes/font_size = 30
+[node name="Rules" type="Label" parent="HUD/Lobby/Scroll/Body"]
+unique_name_in_owner=true
+autowrap_mode = 3
+text = "独行探索 · 预计 3–5 分钟　入场 1 能源\n搜寻节点、突破巡查哨、击破首领后撤离。\n维修车每三秒修复附近重甲。用炮臂远程压制重甲，或用钻头突击维修车。\n胜利携回物资与部件。主动撤退只带回已采物资，战败或过期没有回收物。\n战损随真实机体返回。"
+[node name="PreviousReport" type="Button" parent="HUD/Lobby/Scroll/Body"]
+unique_name_in_owner=true
+visible=false
+text="查看上次个人战报"
+[node name="PartyMode" type="Button" parent="HUD/Lobby/Scroll/Body"]
+unique_name_in_owner=true
+text="组队探索 · 寻找队友或邀请好友"
+[node name="PartyPanel" parent="HUD/Lobby/Scroll/Body" instance=ExtResource("party_lobby")]
+unique_name_in_owner=true
+visible=false
+[node name="Pity" type="Label" parent="HUD/Lobby/Scroll/Body"]
+unique_name_in_owner = true
+autowrap_mode = 2
+[node name="Squad" type="HFlowContainer" parent="HUD/Lobby/Scroll/Body"]
+unique_name_in_owner = true
+[node name="SoloQuote" type="Label" parent="HUD/Lobby/Scroll/Body"]
+unique_name_in_owner = true
+autowrap_mode = 3
+[node name="LobbyStatus" type="Label" parent="HUD/Lobby/Scroll/Body"]
+unique_name_in_owner = true
+autowrap_mode = 2
+[node name="Actions" type="HBoxContainer" parent="HUD/Lobby/Scroll/Body"]
+[node name="Start" type="Button" parent="HUD/Lobby/Scroll/Body/Actions"]
+unique_name_in_owner = true
+disabled = true
+text = "出发"
+[node name="Claim" type="Button" parent="HUD/Lobby/Scroll/Body/Actions"]
+unique_name_in_owner = true
+text = "领取首胜钻头"
+visible = false
+[node name="Reload" type="Button" parent="HUD/Lobby/Scroll/Body/Actions"]
+unique_name_in_owner = true
+visible = false
+text = "重新连接"
+[node name="Back" type="Button" parent="HUD/Lobby/Scroll/Body/Actions"]
+unique_name_in_owner = true
+text = "返回基地"
+[node name="QuickSalvage" parent="HUD/Lobby/Scroll/Body" instance=ExtResource("quick")]
+unique_name_in_owner = true
+[node name="Bar" type="PanelContainer" parent="HUD"]
+unique_name_in_owner = true
+anchor_right = 1
+offset_bottom = 48
+visible = false
+[node name="Row" type="HBoxContainer" parent="HUD/Bar"]
+[node name="Goal" type="Label" parent="HUD/Bar/Row"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+autowrap_mode = 2
+[node name="Reconnect" type="Button" parent="HUD/Bar/Row"]
+unique_name_in_owner = true
+text = "重连原场"
+[node name="AssemblyRetreat" type="Button" parent="HUD/Bar/Row"]
+unique_name_in_owner = true
+visible = false
+text = "退出本场"
+[node name="ShowReport" type="Button" parent="HUD/Bar/Row"]
+unique_name_in_owner=true
+visible=false
+text="个人战报"
+[node name="Stay" type="Button" parent="HUD/Bar/Row"]
+unique_name_in_owner=true
+visible=false
+text="原队再出发"
+[node name="Leave" type="Button" parent="HUD/Bar/Row"]
+unique_name_in_owner = true
+text = "返回基地"
+[node name="Map" type="Control" parent="HUD"]
+unique_name_in_owner = true
+visible = false
+offset_left = 12
+offset_top = 60
+offset_right = 196
+offset_bottom = 170
+script = ExtResource("2")
+[node name="SeatPanel" type="PanelContainer" parent="HUD"]
+unique_name_in_owner = true
+visible = false
+anchor_left = 1
+anchor_right = 1
+offset_left = -324
+offset_right = -12
+offset_top = 56
+mouse_filter = 2
+[node name="Seats" type="Label" parent="HUD/SeatPanel"]
+unique_name_in_owner = true
+mouse_filter = 2
+autowrap_mode = 1
+[node name="Commands" type="PanelContainer" parent="HUD"]
+unique_name_in_owner = true
+anchor_top = 1
+anchor_right = 1
+anchor_bottom = 1
+offset_top = -123
+visible = false
+[node name="Body" type="VBoxContainer" parent="HUD/Commands"]
+[node name="Hint" type="Label" parent="HUD/Commands/Body"]
+unique_name_in_owner = true
+[node name="RoleSelect" parent="HUD/Commands/Body" instance=ExtResource("rolebar")]
+unique_name_in_owner=true
+[node name="Buttons" type="HBoxContainer" parent="HUD/Commands/Body"]
+[node name="All" type="Button" parent="HUD/Commands/Body/Buttons"]
+unique_name_in_owner = true
+text = "全队"
+[node name="Route" type="Button" parent="HUD/Commands/Body/Buttons"]
+unique_name_in_owner = true
+text = "前往目标"
+[node name="Alt" type="Button" parent="HUD/Commands/Body/Buttons"]
+unique_name_in_owner = true
+text = "走储能支路"
+[node name="Collect" type="Button" parent="HUD/Commands/Body/Buttons"]
+unique_name_in_owner = true
+text = "采集"
+[node name="Repair" type="Button" parent="HUD/Commands/Body/Buttons"]
+unique_name_in_owner = true
+text = "战地维修"
+[node name="Retreat" type="Button" parent="HUD/Commands/Body/Buttons"]
+unique_name_in_owner = true
+text = "撤退"
+[node name="Mark" type="Button" parent="HUD/Commands/Body/Buttons"]
+unique_name_in_owner=true
+visible=false
+toggle_mode=true
+text="队长标记"
+[node name="Debrief" parent="HUD" instance=ExtResource("debrief")]
+unique_name_in_owner=true
+visible=false
+[node name="HTTP" type="HTTPRequest" parent="."]
+timeout = 6.0
+
+
+[node name="BattleAudio" parent="." instance=ExtResource("audio")]

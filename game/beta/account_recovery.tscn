@@ -1,0 +1,63 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://beta/account_recovery.gd" id="script"]
+
+[node name="Recovery" type="VBoxContainer"]
+visible = false
+theme_override_constants/separation = 7
+script = ExtResource("script")
+
+[node name="Explanation" type="Label" parent="."]
+unique_name_in_owner = true
+autowrap_mode = 3
+
+[node name="Inputs" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+theme_override_constants/separation = 6
+
+[node name="RecoveryAccount" type="LineEdit" parent="Inputs"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+placeholder_text = "原指挥官账号"
+max_length = 32
+
+[node name="CurrentPassword" type="LineEdit" parent="Inputs"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+placeholder_text = "当前密码"
+secret = true
+virtual_keyboard_type = 6
+max_length = 128
+
+[node name="RecoveryCode" type="LineEdit" parent="Inputs"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+placeholder_text = "一次性恢复码"
+secret = true
+virtual_keyboard_type = 6
+max_length = 120
+
+[node name="NewPassword" type="LineEdit" parent="Inputs"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+placeholder_text = "新密码（8–128 个字符）"
+secret = true
+virtual_keyboard_type = 6
+max_length = 128
+
+[node name="Output" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+autowrap_mode = 3
+text = ""
+
+[node name="Submit" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+
+[node name="Done" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+
+[node name="HTTP" type="HTTPRequest" parent="."]
+timeout = 10.0

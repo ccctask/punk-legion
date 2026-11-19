@@ -1,0 +1,13 @@
+{
+  "name": "GUT",
+  "version": "9.6.1",
+  "tag": "v9.6.1",
+  "repository": "https://github.com/bitwes/Gut",
+  "reference_url": "https://api.github.com/repos/bitwes/Gut/git/ref/tags/v9.6.1",
+  "commit": "c80954f47bed74a0a2c471d472c0389f98e0a8f6",
+  "archive_url": "https://codeload.github.com/bitwes/Gut/zip/c80954f47bed74a0a2c471d472c0389f98e0a8f6",
+  "archive_sha256": "343ba244e66e110273f4f6ca5343c16858eae19c0e35e9b45d404cf3385eba81",
+  "archive_bytes": 1135512,
+  "license": "MIT",
+  "license_archive_path": "Gut-c80954f47bed74a0a2c471d472c0389f98e0a8f6/addons/gut/LICENSE.md"
+}

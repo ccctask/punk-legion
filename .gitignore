@@ -1,0 +1,24 @@
+# Godot import cache
+.godot/
+# Local debug exports and credentials
+build/
+export_credentials.cfg
+game/runtime_endpoints.cfg
+*.apk
+*.aab
+# 本机环境、凭据和生成的验收原始数据不进入公开仓库
+.local/
+__pycache__/
+*.pyc
+*.env
+*.key
+*.pem
+*.p12
+*.keystore
+*.sqlite
+*.sqlite3
+*.db
+openspec/changes/**/verification/
+openspec/changes/**/development/
+openspec/changes/**/evidence/
+docs/evidence/

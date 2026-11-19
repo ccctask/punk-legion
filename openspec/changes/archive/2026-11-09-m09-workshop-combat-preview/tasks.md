@@ -1,0 +1,2 @@
+- [x] 1.1 Implemented and tested single-item comparison. [自测](verification/dev/README.md)
+- [x] 1.2 Independently verified the actual workshop, service combat values and player documentation. [主验](verification/root-review.md)

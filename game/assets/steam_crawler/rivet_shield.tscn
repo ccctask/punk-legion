@@ -1,0 +1,32 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="brass"]
+albedo_color = Color(0.94,0.66,0.28,1)
+metallic = 0.35
+roughness = 0.56
+
+[sub_resource type="SphereMesh" id="rivet"]
+material = SubResource("brass")
+radius = 0.048
+height = 0.096
+radial_segments = 8
+rings = 3
+
+[node name="RivetShield" type="Node3D"]
+position = Vector3(0,-0.14,0.29)
+
+[node name="Plate" type="MeshInstance3D" parent="."]
+scale = Vector3(3.65,2.8,1.0)
+
+[node name="UpperL" type="MeshInstance3D" parent="."]
+position = Vector3(-0.44,0.18,0.08)
+mesh = SubResource("rivet")
+[node name="UpperR" type="MeshInstance3D" parent="."]
+position = Vector3(0.44,0.18,0.08)
+mesh = SubResource("rivet")
+[node name="LowerL" type="MeshInstance3D" parent="."]
+position = Vector3(-0.44,-0.27,0.08)
+mesh = SubResource("rivet")
+[node name="LowerR" type="MeshInstance3D" parent="."]
+position = Vector3(0.44,-0.27,0.08)
+mesh = SubResource("rivet")

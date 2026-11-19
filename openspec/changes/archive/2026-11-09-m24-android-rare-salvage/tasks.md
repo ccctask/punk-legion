@@ -1,0 +1,3 @@
+- [x] 1.1 Freeze the accepted sources, sign 1060 and deploy clean release services. [发行证据](verification/release/README.md)
+- [x] 1.2 Play the capture on Android and reconcile the received part, mount and reopened result. [Android evidence](verification/android/README.md)
+- [x] 1.3 Independently verify the signed release, document the handover and clean up test processes. [主验](verification/root-review.md)

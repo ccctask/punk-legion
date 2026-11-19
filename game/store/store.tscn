@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://client/page_refresh.tscn" id="page_refresh"]
+[ext_resource type="Script" path="res://store/store.gd" id="1"]
+[node name="TestStore" type="PanelContainer"]
+anchor_bottom = 1.0
+offset_right = 366.0
+script = ExtResource("1")
+[node name="Pad" type="MarginContainer" parent="."]
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+[node name="Scroll" type="ScrollContainer" parent="Pad"]
+horizontal_scroll_mode = 0
+[node name="List" type="VBoxContainer" parent="Pad/Scroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 7
+[node name="Title" type="Label" parent="Pad/Scroll/List"]
+text = "工坊商店 · 模拟支付"
+theme_override_font_sizes/font_size = 24
+[node name="Back" type="Button" parent="Pad/Scroll/List"]
+unique_name_in_owner = true
+text = "返回工坊"
+[node name="Capacity" type="Label" parent="Pad/Scroll/List"]
+unique_name_in_owner = true
+autowrap_mode = 2
+[node name="Product" type="OptionButton" parent="Pad/Scroll/List"]
+unique_name_in_owner = true
+[node name="Info" type="Label" parent="Pad/Scroll/List"]
+unique_name_in_owner = true
+autowrap_mode = 2
+[node name="Buy" type="Button" parent="Pad/Scroll/List"]
+unique_name_in_owner = true
+text = "创建测试订单"
+[node name="Robots" type="OptionButton" parent="Pad/Scroll/List"]
+unique_name_in_owner = true
+[node name="Styles" type="OptionButton" parent="Pad/Scroll/List"]
+unique_name_in_owner = true
+[node name="Equip" type="Button" parent="Pad/Scroll/List"]
+unique_name_in_owner = true
+text = "装备预览中的涂装"
+[node name="Orders" type="OptionButton" parent="Pad/Scroll/List"]
+unique_name_in_owner = true
+[node name="Events" type="Label" parent="Pad/Scroll/List"]
+unique_name_in_owner = true
+autowrap_mode = 2
+[node name="Result" type="OptionButton" parent="Pad/Scroll/List"]
+unique_name_in_owner = true
+[node name="Commit" type="Button" parent="Pad/Scroll/List"]
+unique_name_in_owner = true
+text = "提交模拟结果"
+[node name="Message" type="Label" parent="Pad/Scroll/List"]
+unique_name_in_owner = true
+autowrap_mode = 2
+[node name="Reload" type="Button" parent="Pad/Scroll/List"]
+unique_name_in_owner = true
+text = "刷新或重试"
+[node name="HTTP" type="HTTPRequest" parent="."]
+timeout = 6.0
+
+[node name="PageRefresh" parent="." instance=ExtResource("page_refresh")]

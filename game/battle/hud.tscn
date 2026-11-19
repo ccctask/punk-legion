@@ -1,0 +1,169 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://battle/control_groups.tscn" id="groups"]
+
+[sub_resource type="StyleBoxFlat" id="dark"]
+bg_color=Color(0.045,0.095,0.105,0.97)
+border_width_bottom=2
+border_color=Color(0.21,0.45,0.40,1)
+content_margin_left=14.0
+content_margin_right=14.0
+content_margin_top=8.0
+content_margin_bottom=8.0
+
+[sub_resource type="StyleBoxFlat" id="card"]
+bg_color=Color(0.055,0.115,0.125,0.98)
+border_width_left=4
+border_color=Color(0.90,0.66,0.29,1)
+content_margin_left=22.0
+content_margin_right=22.0
+content_margin_top=15.0
+content_margin_bottom=15.0
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Header" type="PanelContainer" parent="."]
+anchor_right=1.0
+mouse_filter=2
+theme_override_styles/panel=SubResource("dark")
+
+[node name="Row" type="HBoxContainer" parent="Header"]
+mouse_filter=2
+theme_override_constants/separation=18
+
+[node name="Mission" type="Label" parent="Header/Row"]
+unique_name_in_owner=true
+text="雾港中继站"
+theme_override_font_sizes/font_size=23
+
+
+[node name="Score" type="Label" parent="Header/Row"]
+unique_name_in_owner=true
+text="控制进度"
+theme_override_font_sizes/font_size=17
+size_flags_horizontal=3
+theme_override_colors/font_color=Color(0.84,0.86,0.69,1)
+
+[node name="Timer" type="Label" parent="Header/Row"]
+unique_name_in_owner=true
+text="03:00"
+theme_override_font_sizes/font_size=20
+
+
+[node name="Commands" type="PanelContainer" parent="."]
+anchor_top=1.0
+anchor_bottom=1.0
+anchor_right=1.0
+grow_vertical=0
+theme_override_styles/panel=SubResource("dark")
+
+[node name="Lines" type="VBoxContainer" parent="Commands"]
+theme_override_constants/separation=3
+
+[node name="Hint" type="Label" parent="Commands/Lines"]
+unique_name_in_owner=true
+text="点击地面移动，点击敌机集火"
+theme_override_font_sizes/font_size=14
+
+
+[node name="Orders" type="HFlowContainer" parent="Commands/Lines"]
+theme_override_constants/separation=6
+
+[node name="All" type="Button" parent="Commands/Lines/Orders"]
+unique_name_in_owner=true
+text="全队"
+custom_minimum_size=Vector2(90,38)
+focus_mode=0
+
+[node name="Alpha" type="Button" parent="Commands/Lines/Orders"]
+unique_name_in_owner=true
+text="前排"
+custom_minimum_size=Vector2(90,38)
+focus_mode=0
+
+[node name="Bravo" type="Button" parent="Commands/Lines/Orders"]
+unique_name_in_owner=true
+text="火力"
+custom_minimum_size=Vector2(90,38)
+focus_mode=0
+
+[node name="Support" type="Button" parent="Commands/Lines/Orders"]
+unique_name_in_owner=true
+text="支援"
+custom_minimum_size=Vector2(80,38)
+
+[node name="Repair" type="Button" parent="Commands/Lines/Orders"]
+unique_name_in_owner=true
+text="维修 ×2"
+custom_minimum_size=Vector2(90,38)
+focus_mode=0
+
+[node name="CustomGroups" parent="Commands/Lines/Orders" instance=ExtResource("groups")]
+unique_name_in_owner=true
+
+[node name="Spacer" type="Control" parent="Commands/Lines/Orders"]
+size_flags_horizontal=3
+mouse_filter=2
+
+[node name="Retreat" type="Button" parent="Commands/Lines/Orders"]
+unique_name_in_owner=true
+text="撤退"
+custom_minimum_size=Vector2(90,38)
+focus_mode=0
+
+[node name="Modal" type="CenterContainer" parent="."]
+anchor_right=1.0
+anchor_bottom=1.0
+mouse_filter=0
+
+[node name="Card" type="PanelContainer" parent="Modal"]
+custom_minimum_size=Vector2(430,0)
+theme_override_styles/panel=SubResource("card")
+
+[node name="Content" type="VBoxContainer" parent="Modal/Card"]
+theme_override_constants/separation=9
+
+[node name="Title" type="Label" parent="Modal/Card/Content"]
+unique_name_in_owner=true
+text="选择出战编队"
+theme_override_font_sizes/font_size=25
+
+
+[node name="Summary" type="Label" parent="Modal/Card/Content"]
+unique_name_in_owner=true
+text="在无敌军的情况下控制中央中继站 16 秒。"
+theme_override_font_sizes/font_size=16
+
+
+[node name="Report" type="RichTextLabel" parent="Modal/Card/Content"]
+unique_name_in_owner=true
+visible=false
+custom_minimum_size=Vector2(380,145)
+scroll_active=true
+theme_override_font_sizes/normal_font_size=15
+
+[node name="Actions" type="HBoxContainer" parent="Modal/Card/Content"]
+theme_override_constants/separation=8
+
+[node name="Light" type="Button" parent="Modal/Card/Content/Actions"]
+unique_name_in_owner=true
+text="轻型 ×12"
+custom_minimum_size=Vector2(90,38)
+focus_mode=0
+
+[node name="Heavy" type="Button" parent="Modal/Card/Content/Actions"]
+unique_name_in_owner=true
+text="重型 ×6"
+custom_minimum_size=Vector2(90,38)
+focus_mode=0
+
+[node name="Retry" type="Button" parent="Modal/Card/Content/Actions"]
+unique_name_in_owner=true
+text="再战"
+custom_minimum_size=Vector2(90,38)
+focus_mode=0
+
+[node name="Workshop" type="Button" parent="Modal/Card/Content/Actions"]
+unique_name_in_owner=true
+text="返回工坊"
+custom_minimum_size=Vector2(90,38)
+focus_mode=0

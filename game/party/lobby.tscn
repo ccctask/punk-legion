@@ -1,0 +1,67 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://party/lobby.gd" id="1"]
+[node name="PartyPanel" type="VBoxContainer"]
+script=ExtResource("1")
+[node name="Room" type="Label" parent="."]
+unique_name_in_owner=true
+autowrap_mode=3
+text="正在读取队伍"
+[node name="Roster" type="Label" parent="."]
+unique_name_in_owner=true
+autowrap_mode=2
+[node name="Select" type="HFlowContainer" parent="."]
+unique_name_in_owner=true
+[node name="Quote" type="Label" parent="."]
+unique_name_in_owner=true
+autowrap_mode=3
+visible=false
+[node name="Match" type="Button" parent="."]
+unique_name_in_owner=true
+visible=false
+text="寻找队友"
+[node name="CancelMatch" type="Button" parent="."]
+unique_name_in_owner=true
+visible=false
+text="取消寻找"
+[node name="Invite" type="HBoxContainer" parent="."]
+unique_name_in_owner=true
+[node name="Create" type="Button" parent="Invite"]
+mouse_filter = 1
+unique_name_in_owner=true
+text="建立队伍"
+[node name="Code" type="LineEdit" parent="Invite"]
+unique_name_in_owner=true
+placeholder_text="输入 8 位房间码"
+custom_minimum_size=Vector2(200,42)
+max_length=8
+[node name="Join" type="Button" parent="Invite"]
+mouse_filter = 1
+unique_name_in_owner=true
+text="加入"
+[node name="Members" type="HBoxContainer" parent="."]
+unique_name_in_owner=true
+[node name="ContinueChoices" type="HBoxContainer" parent="."]
+unique_name_in_owner=true
+visible=false
+[node name="Stay" type="Button" parent="ContinueChoices"]
+unique_name_in_owner=true
+text="原队再出发"
+[node name="Finish" type="Button" parent="ContinueChoices"]
+unique_name_in_owner=true
+text="本次收工"
+[node name="Ready" type="Button" parent="Members"]
+mouse_filter = 1
+unique_name_in_owner=true
+text="准备"
+[node name="Launch" type="Button" parent="Members"]
+mouse_filter = 1
+unique_name_in_owner=true
+text="全队出发"
+[node name="Depart" type="Button" parent="Members"]
+mouse_filter = 1
+unique_name_in_owner=true
+text="离队"
+[node name="CodeCopy" type="Button" parent="Members"]
+mouse_filter = 1
+unique_name_in_owner=true
+text="复制邀请码"

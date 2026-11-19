@@ -1,0 +1,11 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://expedition/expedition.tscn" id="base"]
+[ext_resource type="Script" path="res://armory/outing.gd" id="script"]
+[ext_resource type="Script" path="res://armory/field.gd" id="field"]
+[ext_resource type="PackedScene" path="res://armory/field.tscn" id="art"]
+[node name="ArmoryOuting" instance=ExtResource("base")]
+script=ExtResource("script")
+use_network_motion = false
+[node name="Field" parent="." index="3"]
+script=ExtResource("field")
+[node name="Armory" parent="Field" instance=ExtResource("art")]

@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/base_art/PL_BinDepot.glb" id="glb"]
+
+[ext_resource type="Script" path="res://assets/base_art/painted_asset.gd" id="paint"]
+
+[node name="PL_BinDepot" type="Node3D"]
+script = ExtResource("paint")
+lod_bias = 0.20
+
+[node name="Model" parent="." instance=ExtResource("glb")]
+rotation = Vector3(0,3.14159265,0)

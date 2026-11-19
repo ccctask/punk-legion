@@ -1,0 +1,4 @@
+services:
+  profile:
+    ports:
+      - "127.0.0.1:24980:24670"

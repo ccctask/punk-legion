@@ -1,0 +1,20 @@
+{
+  "state": "authorized narrow component run pending exact runner protection scope clarification",
+  "run_id": "m01-refresh-component-independent-a1",
+  "label": "component-a1",
+  "groups": [
+    "refresh"
+  ],
+  "test_count": 6,
+  "production": [
+    "game/client/page_refresh.gd",
+    "game/client/page_refresh.tscn"
+  ],
+  "headless_max": 1,
+  "fixture_max": 1,
+  "database_device_sdk_container": false,
+  "work_max_seconds": 90,
+  "cleanup_max_seconds": 30,
+  "B_headless_handoff": "B check-a3 exited chunkd53e8c, no live Godot; B continues editing unrelated sources",
+  "coverage_limit": "actual scheduler plus real HTTP transport, no business-page or complete-change acceptance"
+}

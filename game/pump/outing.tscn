@@ -1,0 +1,75 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://expedition/expedition.tscn" id="base"]
+[ext_resource type="Script" path="res://pump/outing.gd" id="pump"]
+[ext_resource type="Script" path="res://pump/field.gd" id="field"]
+[ext_resource type="PackedScene" path="res://pump/valve.tscn" id="valve"]
+[ext_resource type="Script" path="res://pump/landmark_mesh.gd" id="module"]
+
+[node name="PumpOuting" instance=ExtResource("base")]
+script=ExtResource("pump")
+use_network_motion = false
+overhead_names=false
+[node name="Field" parent="." index="3"]
+script=ExtResource("field")
+
+[node name="valve_a" parent="Field" instance=ExtResource("valve")]
+position = Vector3(-24, 0, -16)
+
+[node name="Sign" type="Label3D" parent="Field/valve_a"]
+position = Vector3(0, 3.25, 0)
+billboard = 1
+pixel_size = 0.015
+outline_size = 6
+text = "A 西阀"
+
+[node name="valve_b" parent="Field" instance=ExtResource("valve")]
+position = Vector3(25, 0, 14)
+
+[node name="Sign" type="Label3D" parent="Field/valve_b"]
+position = Vector3(0, 3.25, 0)
+billboard = 1
+pixel_size = 0.015
+outline_size = 6
+text = "B 东阀"
+
+[node name="cache" type="Node3D" parent="Field"]
+position = Vector3(-17, 0, 17)
+
+[node name="Body" type="MeshInstance3D" parent="Field/cache"]
+scale = Vector3(1.5, 1.5, 1.5)
+script = ExtResource("module")
+module = "Scrap"
+
+[node name="Sign" type="Label3D" parent="Field/cache"]
+position = Vector3(0, 3.25, 0)
+billboard = 1
+pixel_size = 0.015
+outline_size = 6
+text = "C 物资箱"
+
+[node name="exit" type="Node3D" parent="Field"]
+position = Vector3(22, 0, -18)
+
+[node name="Body" type="MeshInstance3D" parent="Field/exit"]
+scale = Vector3(1.5, 1.5, 1.5)
+script = ExtResource("module")
+module = "Exit"
+
+[node name="Sign" type="Label3D" parent="Field/exit"]
+position = Vector3(0, 3.25, 0)
+billboard = 1
+pixel_size = 0.015
+outline_size = 6
+text = "E 撤离口"
+
+[node name="Commands" parent="HUD" index="4"]
+offset_top = -150.0
+grow_vertical = 0
+
+[node name="Identity" type="Label" parent="HUD/Commands/Body" index="0"]
+unique_name_in_owner = true
+mouse_filter = 2
+text_overrun_behavior = 3
+clip_text = true
+theme_override_colors/font_color = Color(1,0.87,0.48,1)
+text = "已选 0 台"

@@ -1,0 +1,50 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://camp/freight_module.gd" id="module"]
+[node name="Armory" type="Node3D"]
+[node name="Cache" type="Node3D" parent="."]
+position=Vector3(8,0,0)
+script=ExtResource("module")
+module="Scrap"
+dimensions=Vector3(2.8,1.4,2.4)
+[node name="Label" type="Label3D" parent="Cache"]
+position=Vector3(0,2.5,0)
+billboard=1
+text="回收武器箱"
+[node name="Gate" type="Node3D" parent="."]
+position=Vector3(-8,0,0)
+script=ExtResource("module")
+module="Exit"
+dimensions=Vector3(3.4,2.7,1.8)
+[node name="Label" type="Label3D" parent="Gate"]
+position=Vector3(0,3.4,0)
+billboard=1
+text="撤离门"
+[node name="NorthStock" type="Node3D" parent="."]
+position=Vector3(8,0,-5)
+script=ExtResource("module")
+module="Cover"
+dimensions=Vector3(5,1.6,2)
+[node name="SouthStock" type="Node3D" parent="."]
+position=Vector3(8,0,5)
+script=ExtResource("module")
+module="Coil"
+dimensions=Vector3(3,1.8,2)
+[node name="Breaker" type="Node3D" parent="."]
+position=Vector3(1,0,-6)
+script=ExtResource("module")
+module="Signal"
+dimensions=Vector3(1.1,2.2,1.1)
+[node name="Label" type="Label3D" parent="Breaker"]
+position=Vector3(0,2.8,0)
+text="断电闸"
+billboard=1
+[node name="InnerWall" type="Node3D" parent="."]
+position=Vector3(-1.5,0,-5)
+script=ExtResource("module")
+module="Cover"
+dimensions=Vector3(1.9,1.4,2.9)
+[node name="OuterWall" type="Node3D" parent="."]
+position=Vector3(-1.5,0,5)
+script=ExtResource("module")
+module="Cover"
+dimensions=Vector3(1.9,1.4,2.9)

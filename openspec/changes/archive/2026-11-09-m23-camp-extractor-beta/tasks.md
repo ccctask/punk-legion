@@ -1,0 +1,3 @@
+- [x] 1.1 冻结签名候选、部署新卷，核验包、配置与服务。
+- [x] 1.2 安卓从私人基地正常登记、实时占领、建设、冷启与自然到期领取。[现场记录](verification/android/README.md)
+- [x] 1.3 主验三项回执和时间；恢复默认日程、关闭 1025 服务和专项移动资源、更新试玩入口。[主验记录](verification/root-review.md) · [日程恢复](verification/release/calendar-restore.json)

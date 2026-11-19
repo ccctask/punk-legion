@@ -1,0 +1,65 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://battle/switchyard_deck.tscn" id="deck"]
+[ext_resource type="PackedScene" path="res://camp/freight_plinth.tscn" id="pad"]
+[ext_resource type="Script" path="res://camp/freight_module.gd" id="module"]
+[ext_resource type="Shader" path="res://camp/freight_deck.gdshader" id="paint"]
+[ext_resource type="Script" path="res://camp/freight_deck.gd" id="finish"]
+[sub_resource type="ShaderMaterial" id="floor"]
+shader=ExtResource("paint")
+shader_parameter/cable_quay=true
+[node name="CoilQuay" type="Node3D"]
+[node name="Deck" parent="." instance=ExtResource("deck")]
+script=ExtResource("finish")
+finish=SubResource("floor")
+scale=Vector3(1,1,-1)
+[node name="WestFoot" parent="." instance=ExtResource("pad")]
+position=Vector3(-4.5,0.1,1)
+scale=Vector3(2, 1, 5)
+[node name="EastFoot" parent="." instance=ExtResource("pad")]
+position=Vector3(4.5,0.1,-1)
+scale=Vector3(2, 1, 5)
+[node name="NorthFoot" parent="." instance=ExtResource("pad")]
+position=Vector3(0,0.1,5.5)
+scale=Vector3(3, 1, 2)
+[node name="SouthFoot" parent="." instance=ExtResource("pad")]
+position=Vector3(0,0.1,-5.5)
+scale=Vector3(3, 1, 2)
+[node name="WestCableDrums" type="Node3D" parent="."]
+position=Vector3(-4.5,0.22,1)
+rotation_degrees=Vector3(0,90,0)
+script=ExtResource("module")
+module="Coil"
+dimensions=Vector3(3.85, 1.92, 1.62)
+[node name="EastCableDrums" type="Node3D" parent="."]
+position=Vector3(4.5,0.22,-1)
+rotation_degrees=Vector3(0,90,0)
+script=ExtResource("module")
+module="Coil"
+dimensions=Vector3(3.85, 1.92, 1.62)
+[node name="NearSpindle" type="Node3D" parent="."]
+position=Vector3(0,0.22,5.5)
+rotation_degrees=Vector3(0,0,0)
+script=ExtResource("module")
+module="Coil"
+dimensions=Vector3(2.65, 1.12, 1.56)
+[node name="RearSpindle" type="Node3D" parent="."]
+position=Vector3(0,0.22,-5.5)
+rotation_degrees=Vector3(0,0,0)
+script=ExtResource("module")
+module="Coil"
+dimensions=Vector3(2.65, 1.12, 1.56)
+[node name="CableQuayFoot" parent="." instance=ExtResource("pad")]
+position=Vector3(16.75,-0.15,0)
+scale=Vector3(2.8, 2, 6.35)
+[node name="PayoffSpools" type="Node3D" parent="."]
+position=Vector3(16.75,0.12,-0.75)
+rotation_degrees=Vector3(0,90,0)
+script=ExtResource("module")
+module="Coil"
+dimensions=Vector3(3.85, 2.75, 2.43)
+[node name="QuaySignal" type="Node3D" parent="."]
+position=Vector3(16.7,0.12,2.25)
+rotation_degrees=Vector3(0,0,0)
+script=ExtResource("module")
+module="Signal"
+dimensions=Vector3(0.78, 1.9, 0.65)

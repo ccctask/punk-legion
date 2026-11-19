@@ -1,0 +1,88 @@
+services:
+  treasure:
+    build: .
+    entrypoint: ["godot","--headless","--path","/opt/room","--","--treasure-server"]
+    environment:
+      SOLO_PROFILE_URL: http://profile:24670
+      ROOM_AUTH_FILE: /run/room-auth/key
+    volumes:
+      - room-auth:/run/room-auth:ro
+    ports:
+      - "${ROOM_BIND_ADDRESS:-127.0.0.1}:${TREASURE_HOST_PORT:-24571}:24571/udp"
+  camp:
+    build: .
+    entrypoint: ["godot","--headless","--path","/opt/room","--","--camp-server"]
+    environment:
+      SOLO_PROFILE_URL: http://profile:24670
+      ROOM_AUTH_FILE: /run/room-auth/key
+      CAMP_SAVE_DIR: /var/lib/punk-room
+    volumes:
+      - room-auth:/run/room-auth:ro
+      - camp-battles:/var/lib/punk-room
+    ports:
+      - "${ROOM_BIND_ADDRESS:-127.0.0.1}:${CAMP_HOST_PORT:-24570}:24570/udp"
+  party:
+    build: .
+    entrypoint: ["godot","--headless","--path","/opt/room","--","--party-server"]
+    environment:
+      SOLO_PROFILE_URL: http://profile:24670
+      ROOM_AUTH_FILE: /run/room-auth/key
+      PARTY_SAVE_DIR: /var/lib/punk-room
+    volumes:
+      - room-auth:/run/room-auth:ro
+      - party-missions:/var/lib/punk-room
+    ports:
+      - "${ROOM_BIND_ADDRESS:-127.0.0.1}:${PARTY_HOST_PORT:-24569}:24569/udp"
+  expedition:
+    build: .
+    entrypoint: ["godot","--headless","--path","/opt/room","--","--solo-server"]
+    environment:
+      SOLO_PROFILE_URL: http://profile:24670
+      ROOM_AUTH_FILE: /run/room-auth/key
+      SOLO_SAVE_DIR: /var/lib/punk-room
+    volumes:
+      - room-auth:/run/room-auth:ro
+      - solo-missions:/var/lib/punk-room
+    ports:
+      - "${ROOM_BIND_ADDRESS:-127.0.0.1}:${SOLO_HOST_PORT:-24568}:24568/udp"
+  room:
+    build: .
+    environment:
+      ROOM_RESULTS_URL: http://profile:24670/internal/results
+      ROOM_AUTH_FILE: /run/room-auth/key
+      ROOM_OUTBOX_DIR: /var/lib/punk-room
+    volumes:
+      - room-auth:/run/room-auth:ro
+      - room-results:/var/lib/punk-room
+    ports:
+      - "${ROOM_BIND_ADDRESS:-127.0.0.1}:${ROOM_HOST_PORT:-24567}:24567/udp"
+  profile:
+    build: ./services/profile
+    environment:
+      PUNK_TEST_PAYMENTS: "${PUNK_TEST_PAYMENTS:-1}"
+      WORLD_CALENDAR_FILE: /etc/punk/world/calendar.json
+      BETA_PROTOCOL_MIN: "${BETA_PROTOCOL_MIN:-1}"
+      TREASURE_EPOCH: "${TREASURE_EPOCH:-0}"
+      PUMP_EPOCH: "${PUMP_EPOCH:-0}"
+      CAMP_SPOOL_DIR: /run/camp
+      ROOM_KEY_FILE: /run/room-auth/key
+      PARTY_SPOOL_DIR: /run/party-missions
+      SOLO_SPOOL_DIR: /run/solo-missions
+      ROOM_OUTBOX_DIR: /var/lib/punk-room
+    ports:
+      - "${PROFILE_BIND_ADDRESS:-127.0.0.1}:${PROFILE_HOST_PORT:-24670}:24670"
+    volumes:
+      - ./services/profile/config:/etc/punk/world:ro
+      - camp-battles:/run/camp:ro
+      - player-profiles:/data
+      - party-missions:/run/party-missions:ro
+      - solo-missions:/run/solo-missions:ro
+      - room-auth:/run/room-auth
+      - room-results:/var/lib/punk-room:ro
+volumes:
+  camp-battles:
+  party-missions:
+  solo-missions:
+  player-profiles:
+  room-auth:
+  room-results:

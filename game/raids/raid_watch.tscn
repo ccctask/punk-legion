@@ -1,0 +1,86 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://raids/raid_watch.gd" id="s"]
+[sub_resource type="StandardMaterial3D" id="beamMat"]
+shading_mode=0
+albedo_color=Color(1,0.82,0.25,1)
+[sub_resource type="BoxMesh" id="beam"]
+material=SubResource("beamMat")
+[sub_resource type="StandardMaterial3D" id="routeMat"]
+shading_mode=0
+cull_mode=2
+vertex_color_use_as_albedo=true
+[node name="RaidWatch" type="Node3D"]
+script=ExtResource("s")
+[node name="Units" type="Node3D" parent="."]
+[node name="Marks" type="Node3D" parent="."]
+[node name="Shots" type="Node3D" parent="."]
+[node name="ApproachRoute" type="MeshInstance3D" parent="."]
+visible=false
+cast_shadow=0
+material_override=SubResource("routeMat")
+[node name="Entry" type="Label3D" parent="ApproachRoute"]
+text="来袭入口"
+billboard=1
+font_size=36
+outline_size=8
+pixel_size=0.011
+modulate=Color(1,0.9,0.61,1)
+[node name="Beam" type="MeshInstance3D" parent="."]
+visible=false
+mesh=SubResource("beam")
+[node name="HTTP" type="HTTPRequest" parent="."]
+timeout=5
+[node name="HUD" type="CanvasLayer" parent="."]
+layer=5
+[node name="Panel" type="PanelContainer" parent="HUD"]
+anchor_left=1.0
+anchor_right=1.0
+anchor_bottom=1.0
+offset_left=-275.0
+[node name="Pad" type="MarginContainer" parent="HUD/Panel"]
+theme_override_constants/margin_left=12
+theme_override_constants/margin_right=12
+theme_override_constants/margin_top=10
+[node name="Scroll" type="ScrollContainer" parent="HUD/Panel/Pad"]
+horizontal_scroll_mode=0
+[node name="Rows" type="VBoxContainer" parent="HUD/Panel/Pad/Scroll"]
+size_flags_horizontal=3
+theme_override_constants/separation=9
+[node name="Title" type="Label" parent="HUD/Panel/Pad/Scroll/Rows"]
+text="基地防守"
+theme_override_font_sizes/font_size=26
+[node name="Back" type="Button" parent="HUD/Panel/Pad/Scroll/Rows"]
+unique_name_in_owner=true
+text="返回基地"
+[node name="Status" type="Label" parent="HUD/Panel/Pad/Scroll/Rows"]
+unique_name_in_owner=true
+autowrap_mode=3
+[node name="Time" type="Label" parent="HUD/Panel/Pad/Scroll/Rows"]
+unique_name_in_owner=true
+autowrap_mode=3
+[node name="Guard" type="OptionButton" parent="HUD/Panel/Pad/Scroll/Rows"]
+unique_name_in_owner=true
+[node name="Commit" type="Button" parent="HUD/Panel/Pad/Scroll/Rows"]
+unique_name_in_owner=true
+text="登记驻防机"
+[node name="GuardCondition" type="Button" parent="HUD/Panel/Pad/Scroll/Rows"]
+unique_name_in_owner=true
+visible=false
+text="查看驻防机当前机况"
+[node name="Replay" type="Button" parent="HUD/Panel/Pad/Scroll/Rows"]
+unique_name_in_owner=true
+text="播放本场防守记录"
+[node name="Refresh" type="Button" parent="HUD/Panel/Pad/Scroll/Rows"]
+unique_name_in_owner=true
+visible=false
+text="重新连接"
+
+[node name="DetailsToggle" type="Button" parent="HUD/Panel/Pad/Scroll/Rows"]
+unique_name_in_owner=true
+visible=false
+toggle_mode=true
+text="展开战报详情"
+[node name="Details" type="Label" parent="HUD/Panel/Pad/Scroll/Rows"]
+unique_name_in_owner=true
+visible=false
+autowrap_mode=3

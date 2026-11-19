@@ -1,0 +1,3 @@
+- [x] 1.1 档案报价和原子回收，覆盖有效机体、个人胜利门槛、容量、逐日次数及幂等。见[服务端测试](verification/server/quick.log)。
+- [x] 1.2 独行准备页显示解锁条件、机体、费用、实际收益、确认及回执，小屏从基地进入复验。见[800×450 报价、回执与手动出击](verification/ui/README.md)。
+- [x] 1.3 主代理独立对账正常回收、重复请求、并发、跨日及不产生战报，更新玩法文档。见[新库跨日并发对账](verification/root-concurrent.json)与[复验脚本](verification/root-concurrent.py)。

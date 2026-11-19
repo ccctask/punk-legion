@@ -1,0 +1,38 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://audio/battle_audio.tscn" id="audio"]
+
+[ext_resource type="Script" path="res://battle/battle.gd" id="controller"]
+[ext_resource type="PackedScene" path="res://battle/map.tscn" id="map"]
+[ext_resource type="PackedScene" path="res://battle/hud.tscn" id="hud"]
+[sub_resource type="Environment" id="env"]
+background_mode=1
+background_color=Color(0.055,0.11,0.13,1)
+ambient_light_source=2
+ambient_light_color=Color(0.90,0.96,0.92,1)
+ambient_light_energy=0.72
+tonemap_mode=0
+
+[node name="RelayBattle" type="Node3D"]
+script=ExtResource("controller")
+
+[node name="World" type="WorldEnvironment" parent="."]
+environment=SubResource("env")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees=Vector3(-50,-35,0)
+light_color=Color(1.0,0.91,0.76,1)
+light_energy=1.1
+shadow_enabled=true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+position=Vector3(0,24,15)
+rotation_degrees=Vector3(-57.995,0,0)
+projection=1
+size=22.0
+current=true
+
+[node name="Switchyard" parent="." instance=ExtResource("map")]
+[node name="Units" type="Node3D" parent="."]
+[node name="HUD" parent="." instance=ExtResource("hud")]
+
+[node name="BattleAudio" parent="." instance=ExtResource("audio")]

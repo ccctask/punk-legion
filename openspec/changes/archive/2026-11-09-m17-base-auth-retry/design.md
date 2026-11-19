@@ -1,0 +1,1 @@
+参考 Pokémon GO 官方对短时连接故障的建议，恢复连接后再次登录。登录无回复时回到可编辑的账号表单，一次点击直接重新登录。注册回执不明时提示优先用相同信息登录，允许玩家在确认后自行注册。账号请求只由明确玩家动作触发，已有账号错误、维护门槛、首次命名和本地会话清理沿用现有行为。Wi-Fi 的底层成因单独记录观察。[游戏参考](https://niantic.helpshift.com/hc/en/6-pokemon-go/faq/113-i-received-the-unable-to-authenticate-or-failed-to-log-in-message/)

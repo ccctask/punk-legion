@@ -1,0 +1,50 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://profile/inventory.gd" id="1"]
+
+[node name="Inventory" type="VBoxContainer"]
+script = ExtResource("1")
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="."]
+text = "仓库与账本"
+theme_override_font_sizes/font_size = 22
+[node name="Stock" type="Label" parent="."]
+unique_name_in_owner = true
+autowrap_mode = 2
+[node name="Actions" type="HBoxContainer" parent="."]
+[node name="LoadStock" type="Button" parent="Actions"]
+unique_name_in_owner = true
+text = "查看库存"
+[node name="Craft" type="Button" parent="Actions"]
+unique_name_in_owner = true
+text = "制造炮臂（3 材料，2 零件）"
+[node name="Admit" type="Button" parent="Actions"]
+unique_name_in_owner = true
+text = "演习入场（1 能源）"
+[node name="Retry" type="Button" parent="Actions"]
+unique_name_in_owner = true
+text = "重试待确认操作"
+[node name="Repeater" type="Button" parent="."]
+unique_name_in_owner = true
+text = "制造铆钉连发器"
+[node name="SurveyRadar" type="Button" parent="."]
+unique_name_in_owner = true
+text = "制造测绘雷达"
+[node name="Drill" type="Button" parent="."]
+unique_name_in_owner = true
+text = "制造钻头"
+[node name="Visor" type="Button" parent="."]
+unique_name_in_owner = true
+text = "制造战术目镜"
+[node name="RepairPart" type="Button" parent="."]
+unique_name_in_owner=true
+text="制造维修臂（2 结构，2 零件）"
+[node name="Jammer" type="Button" parent="."]
+unique_name_in_owner=true
+text="制造干扰器（2 结构，2 零件）"
+[node name="Shield" type="Button" parent="."]
+unique_name_in_owner=true
+text="制造铆钉盾板（3 结构，1 零件）"
+[node name="Ledger" type="Label" parent="."]
+unique_name_in_owner = true
+autowrap_mode = 2

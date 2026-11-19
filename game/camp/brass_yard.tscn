@@ -1,0 +1,79 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://battle/switchyard_deck.tscn" id="deck"]
+[ext_resource type="PackedScene" path="res://camp/freight_plinth.tscn" id="pad"]
+[ext_resource type="Script" path="res://camp/freight_module.gd" id="module"]
+[ext_resource type="PackedScene" path="res://assets/base_art/HookGantry.tscn" id="crane"]
+[ext_resource type="PackedScene" path="res://assets/base_art/BinDepot.tscn" id="stores"]
+[ext_resource type="Shader" path="res://camp/freight_deck.gdshader" id="paint"]
+[ext_resource type="Script" path="res://camp/freight_deck.gd" id="finish"]
+[sub_resource type="ShaderMaterial" id="floor"]
+shader=ExtResource("paint")
+shader_parameter/cable_quay=false
+[node name="BrassYard" type="Node3D"]
+[node name="Deck" parent="." instance=ExtResource("deck")]
+script=ExtResource("finish")
+finish=SubResource("floor")
+[node name="WestFoot" parent="." instance=ExtResource("pad")]
+position=Vector3(-4.5,0.1,-1)
+scale=Vector3(2, 1, 5)
+[node name="EastFoot" parent="." instance=ExtResource("pad")]
+position=Vector3(4.5,0.1,1)
+scale=Vector3(2, 1, 5)
+[node name="NorthFoot" parent="." instance=ExtResource("pad")]
+position=Vector3(0,0.1,-5.5)
+scale=Vector3(3, 1, 2)
+[node name="SouthFoot" parent="." instance=ExtResource("pad")]
+position=Vector3(0,0.1,5.5)
+scale=Vector3(3, 1, 2)
+[node name="EastLoadingCrane" parent="." instance=ExtResource("crane")]
+position=Vector3(4.5,0.22,-0.19)
+scale=Vector3(1.65, 1.15, 1.02)
+rotation_degrees=Vector3(0,-5,0)
+[node name="EastRailCart" type="Node3D" parent="."]
+position=Vector3(4.5,0.22,2.19)
+rotation_degrees=Vector3(0,90,0)
+script=ExtResource("module")
+module="Scrap"
+dimensions=Vector3(2.10, 1.18, 1.68)
+[node name="WestSteelCart" type="Node3D" parent="."]
+position=Vector3(-4.5,0.22,0.08)
+rotation_degrees=Vector3(0,90,0)
+script=ExtResource("module")
+module="Scrap"
+dimensions=Vector3(2.18, 1.24, 1.68)
+[node name="WestIronHopper" type="Node3D" parent="."]
+position=Vector3(-4.5,0.22,-2.18)
+rotation_degrees=Vector3(0,0,0)
+script=ExtResource("module")
+module="Cover"
+dimensions=Vector3(1.68, 1.02, 1.72)
+[node name="NorthContainerStack" parent="." instance=ExtResource("stores")]
+position=Vector3(0,0.22,-5.5)
+scale=Vector3(1.2, 0.77, 1.38)
+[node name="SouthIronHopper" type="Node3D" parent="."]
+position=Vector3(0,0.22,5.5)
+rotation_degrees=Vector3(0,0,0)
+script=ExtResource("module")
+module="Cover"
+dimensions=Vector3(2.61, 1.0, 1.59)
+[node name="FreightSidingFoot" parent="." instance=ExtResource("pad")]
+position=Vector3(16.75,-0.15,0)
+scale=Vector3(2.8, 2, 6.35)
+[node name="SidingRails" type="Node3D" parent="."]
+position=Vector3(16.75,0.11,0)
+rotation_degrees=Vector3(0,0,0)
+script=ExtResource("module")
+module="Track"
+dimensions=Vector3(2.4, 0.2, 6.1)
+[node name="InboundOreWagon" type="Node3D" parent="."]
+position=Vector3(16.75,0.32,-1.33)
+rotation_degrees=Vector3(0,0,0)
+script=ExtResource("module")
+module="Cover"
+dimensions=Vector3(2.45, 2.01, 2.75)
+[node name="InboundRailWagon" type="Node3D" parent="."]
+position=Vector3(16.75,0.32,1.58)
+rotation_degrees=Vector3(0,0,0)
+script=ExtResource("module")
+module="Scrap"
+dimensions=Vector3(2.4, 1.8, 2.6)

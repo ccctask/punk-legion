@@ -1,0 +1,4 @@
+- [x] 1.1 服务端事件、单人/组队准入、独立派遣、逐人奖励及锈轨隔离，覆盖跨窗和重投。见[新库档案回归、台账和范围](verification/profile/README.md)。
+- [x] 1.2 权威实例运行双阀、守卫、物资和撤离，覆盖单人/组队、部分到齐、恢复和胜负。见[权威模型及三场联机实测](verification/room/README.md)。
+- [x] 1.3 世界地图入口、准备和战场场景组合，以现有资产清楚表达两个阀门、箱和出口，完成小屏对照。见[三席战果与图钉触控矩阵](verification/client/README.md)。
+- [x] 1.4 主代理从基地分别完成真实单人及好友分工，复核收益、机体档案、资源清理和玩法文档。见[主验](verification/root-review.md)与[资源收尾](verification/room/cleanup.json)。

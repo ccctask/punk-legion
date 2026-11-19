@@ -1,0 +1,72 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://beta/diagnostics.gd" id="1"]
+[ext_resource type="Texture2D" path="res://client/steam_crawler.webp" id="2"]
+[sub_resource type="SystemFont" id="font"]
+font_names = PackedStringArray("Microsoft YaHei UI","Noto Sans CJK SC","Droid Sans Fallback")
+[sub_resource type="Theme" id="theme"]
+default_font=SubResource("font")
+default_font_size=18
+[node name="PrivateBeta" type="Control"]
+layout_mode=3
+anchors_preset=15
+anchor_right=1.0
+anchor_bottom=1.0
+theme=SubResource("theme")
+script=ExtResource("1")
+[node name="Background" type="ColorRect" parent="."]
+anchor_right=1.0
+anchor_bottom=1.0
+color=Color(0.058,0.105,0.105,1)
+[node name="Portrait" type="TextureRect" parent="."]
+anchor_left=0.65
+anchor_right=0.99
+anchor_top=0.12
+anchor_bottom=0.82
+texture=ExtResource("2")
+expand_mode=1
+stretch_mode=5
+mouse_filter=2
+[node name="ContentScroll" type="ScrollContainer" parent="."]
+anchor_left=0.045
+anchor_top=0.045
+anchor_right=0.63
+anchor_bottom=0.98
+horizontal_scroll_mode=0
+[node name="Layout" type="VBoxContainer" parent="ContentScroll"]
+size_flags_horizontal=3
+theme_override_constants/separation=8
+[node name="Title" type="Label" parent="ContentScroll/Layout"]
+text="朋克军团　独立内测"
+theme_override_font_sizes/font_size=32
+theme_override_colors/font_color=Color(0.98,0.79,0.48,1)
+[node name="Version" type="Label" parent="ContentScroll/Layout"]
+unique_name_in_owner=true
+theme_override_colors/font_color=Color(0.6,0.82,0.74,1)
+[node name="About" type="Label" parent="ContentScroll/Layout"]
+unique_name_in_owner=true
+autowrap_mode=3
+[node name="Network" type="Label" parent="ContentScroll/Layout"]
+unique_name_in_owner=true
+autowrap_mode=3
+[node name="Status" type="Label" parent="ContentScroll/Layout"]
+unique_name_in_owner=true
+autowrap_mode=3
+theme_override_colors/font_color=Color(0.98,0.81,0.51,1)
+[node name="Actions" type="HFlowContainer" parent="ContentScroll/Layout"]
+[node name="Play" type="Button" parent="ContentScroll/Layout/Actions"]
+unique_name_in_owner=true
+text="进入游戏"
+custom_minimum_size=Vector2(146,47)
+disabled=true
+[node name="Retry" type="Button" parent="ContentScroll/Layout/Actions"]
+unique_name_in_owner=true
+text="重试连接"
+[node name="Feedback" type="Button" parent="ContentScroll/Layout/Actions"]
+unique_name_in_owner=true
+text="复制反馈信息"
+[node name="Contact" type="Label" parent="ContentScroll/Layout"]
+unique_name_in_owner=true
+autowrap_mode=3
+theme_override_font_sizes/font_size=15
+[node name="HTTP" type="HTTPRequest" parent="."]
+timeout=5

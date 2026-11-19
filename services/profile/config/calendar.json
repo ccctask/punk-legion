@@ -1,0 +1,9 @@
+{
+  "nodes": [
+    {"id":"rustrail","type":"party","name":"锈轨回收场","resource":"零件与装备","x":0.25,"y":0.38},
+    {"id":"brass-yard","type":"camp","name":"黄铜转运场","resource":"结构材料","x":0.65,"y":0.31,
+     "settlement_grace":600,"daily":[[14400,15600,16200],[43200,44400,45000]]},
+    {"id":"coil-depot","type":"camp","name":"线圈港","resource":"通用零件","x":0.47,"y":0.73,
+     "settlement_grace":600,"daily":[[32400,34200,34800],[85800,87000,87600]]}
+  ]
+}

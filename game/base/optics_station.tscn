@@ -1,0 +1,61 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/base_art/BinDepot.tscn" id="depot"]
+
+[sub_resource type="StandardMaterial3D" id="brass"]
+albedo_color = Color(0.72, 0.45, 0.20, 1)
+roughness = 0.68
+
+[sub_resource type="StandardMaterial3D" id="glass"]
+albedo_color = Color(0.14, 0.66, 0.72, 1)
+roughness = 0.22
+
+[sub_resource type="CylinderMesh" id="barrel"]
+material = SubResource("brass")
+top_radius = 0.19
+bottom_radius = 0.15
+height = 0.45
+radial_segments = 12
+rings = 0
+
+[sub_resource type="CylinderMesh" id="lens"]
+material = SubResource("glass")
+top_radius = 0.145
+bottom_radius = 0.145
+height = 0.02
+radial_segments = 12
+rings = 0
+
+[sub_resource type="BoxMesh" id="support"]
+material = SubResource("brass")
+size = Vector3(0.43,0.35,0.14)
+
+[node name="OpticsStation" type="Node3D"]
+
+[node name="LabBench" parent="." instance=ExtResource("depot")]
+scale = Vector3(0.92,0.72,0.84)
+
+[node name="OpticalBench" type="Node3D" parent="."]
+position = Vector3(0.05,0.98,0)
+rotation = Vector3(0,0.35,0)
+
+[node name="Support" type="MeshInstance3D" parent="OpticalBench"]
+mesh = SubResource("support")
+
+[node name="LeftScope" type="MeshInstance3D" parent="OpticalBench"]
+position = Vector3(-0.18,0.21,0)
+rotation = Vector3(-1.12,0,0)
+mesh = SubResource("barrel")
+
+[node name="Glass" type="MeshInstance3D" parent="OpticalBench/LeftScope"]
+position = Vector3(0,0.23,0)
+mesh = SubResource("lens")
+
+[node name="RightScope" type="MeshInstance3D" parent="OpticalBench"]
+position = Vector3(0.18,0.21,0)
+rotation = Vector3(-1.12,0,0)
+mesh = SubResource("barrel")
+
+[node name="Glass" type="MeshInstance3D" parent="OpticalBench/RightScope"]
+position = Vector3(0,0.23,0)
+mesh = SubResource("lens")

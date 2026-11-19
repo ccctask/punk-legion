@@ -1,0 +1,92 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://treasure/sites/old_crane_yard_floor.png" id="art"]
+[ext_resource type="Script" path="res://pump/landmark_mesh.gd" id="module"]
+[ext_resource type="PackedScene" path="res://assets/base_art/HookGantry.tscn" id="hoist"]
+[ext_resource type="PackedScene" path="res://assets/base_art/BinDepot.tscn" id="bins"]
+
+[sub_resource type="StandardMaterial3D" id="sole"]
+albedo_color = Color(0.03434,0.0648,0.08438,1)
+roughness = 0.86
+
+[sub_resource type="StandardMaterial3D" id="waist"]
+albedo_color = Color(0.32778,0.23074,0.11697,1)
+roughness = 0.86
+
+[sub_resource type="StandardMaterial3D" id="rim"]
+albedo_color = Color(0.30947,0.2384,0.15293,1)
+roughness = 0.86
+
+[sub_resource type="StandardMaterial3D" id="trim"]
+albedo_color = Color(0.08022,0.11193,0.11954,1)
+roughness = 0.86
+
+[sub_resource type="StandardMaterial3D" id="print"]
+albedo_texture = ExtResource("art")
+shading_mode = 0
+transparency = 2
+alpha_scissor_threshold = 0.5
+roughness = 0.99
+
+[sub_resource type="PlaneMesh" id="label"]
+material = SubResource("print")
+size = Vector2(29.30,19.24)
+
+[sub_resource type="BoxMesh" id="foot"]
+material = SubResource("trim")
+size = Vector3(1,1,1)
+
+[node name="OldCraneYard" type="Node3D"]
+
+
+[node name="CastIronUnderside" type="CSGPolygon3D" parent="."]
+position = Vector3(0.0, -0.68, 0.0)
+rotation_degrees = Vector3(-90.0, 0.0, 0.0)
+polygon = PackedVector2Array(-15.14,7.549999999999999,-15.14,-0.7,-14.190000000000001,-1.65,-14.190000000000001,-7.549999999999999,-12.040000000000001,-9.95,12.040000000000001,-9.95,14.190000000000001,-7.549999999999999,14.190000000000001,-1.65,15.14,-0.7,15.14,7.549999999999999,12.74,9.95,-12.74,9.95)
+depth = 1.35
+material = SubResource("sole")
+
+[node name="BrassWaist" type="CSGPolygon3D" parent="."]
+position = Vector3(0.0, -0.42, 0.0)
+rotation_degrees = Vector3(-90.0, 0.0, 0.0)
+polygon = PackedVector2Array(-15.01,7.52,-15.01,-0.7,-14.06,-1.65,-14.06,-7.469999999999999,-11.91,-9.87,11.91,-9.87,14.06,-7.469999999999999,14.06,-1.65,15.01,-0.7,15.01,7.52,12.66,9.87,-12.66,9.87)
+depth = 0.26
+material = SubResource("waist")
+
+[node name="BevelledDeck" type="CSGPolygon3D" parent="."]
+position = Vector3(0.0, -0.025, 0.0)
+rotation_degrees = Vector3(-90.0, 0.0, 0.0)
+polygon = PackedVector2Array(-14.65,7.27,-14.65,-0.7,-13.700000000000001,-1.65,-13.700000000000001,-7.219999999999999,-11.55,-9.62,11.55,-9.62,13.700000000000001,-7.219999999999999,13.700000000000001,-1.65,14.65,-0.7,14.65,7.27,12.3,9.62,-12.3,9.62)
+depth = 0.4
+material = SubResource("rim")
+
+[node name="PrintedSurface" type="MeshInstance3D" parent="."]
+position = Vector3(0.0, -0.011, 0.0)
+mesh = SubResource("label")
+
+[node name="GantryFoot" type="MeshInstance3D" parent="."]
+position = Vector3(-11.65, 0.18, -1.65)
+scale = Vector3(3.9, 0.36, 5.6)
+mesh = SubResource("foot")
+
+[node name="Hoist" parent="." instance=ExtResource("hoist")]
+position = Vector3(-11.75, 0.38, -1.65)
+rotation_degrees = Vector3(0.0, 58.0, 0.0)
+scale = Vector3(2.5, 2.95, 2.55)
+
+[node name="DeliveryFoot" type="MeshInstance3D" parent="."]
+position = Vector3(11.65, 0.16, -2.1)
+scale = Vector3(3.85, 0.32, 6.8)
+mesh = SubResource("foot")
+
+[node name="BundledStock" parent="." instance=ExtResource("bins")]
+position = Vector3(11.8, 0.35, -1.65)
+rotation_degrees = Vector3(0.0, 90.0, 0.0)
+scale = Vector3(1.85, 1.9, 1.85)
+
+[node name="Inbound" type="MeshInstance3D" parent="."]
+position = Vector3(11.65, 0.25, -5.0)
+rotation_degrees = Vector3(0.0, 0.0, 0.0)
+scale = Vector3(0.82, 0.7, 0.82)
+script = ExtResource("module")
+module = "Track"

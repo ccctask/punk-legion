@@ -1,0 +1,4 @@
+- [x] 1.1 从 1070 和两份已验清单冻结源、签名、验包、用独立新卷启动六服务及核对握手。[主代理复算](verification/root-release.json) · [签名清单](verification/release/signed.json) · [端口握手](verification/release/transport.log)
+- [x] 2.1 安卓新号触控制造连发器、雷达并装配。已从候选库按首机、两张实物制造收据和安装记录核对，画面显示 4/4 载重、3 指挥点及 38 耐久。[实物主验](verification/root-loadout.json) · [手机机库](verification/android/equipped.png)
+- [x] 2.2 手机携同一机体进秘宝房，核对探测前后画面、拾取距离、另一方视角、撤离与唯一入账。
+- [x] 2.3 主代理独立核对安装件、服务状态、收据、日程恢复和资源释放，交接试玩入口。

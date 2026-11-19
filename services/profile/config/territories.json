@@ -1,0 +1,10 @@
+{
+  "brass-yard": {
+    "resource": "structure",
+    "name": "黄铜转运场"
+  },
+  "coil-depot": {
+    "resource": "components",
+    "name": "线圈港"
+  }
+}

@@ -1,0 +1,50 @@
+schema: spec-driven
+context: |
+  所有实现前遵循 AGENTS.md「实现前系统性架构评审」及 docs/architecture-review.md；在design中明确模块归属、状态/事务所有者、依赖与组合、失败/生命周期及验收，主代理签收后才派开发。
+  当前架构整改优先，按 docs/architecture-remediation.md 的阶段出口推进；新增跨域依赖或改变提交/生命周期先复审，不能以通用抽象或文档完成替代实际整改验收。
+  QA 体验取舍遵循 AGENTS.md「游戏 QA 自主决策」：参考同类游戏场景，由主代理定案并记录依据与实测结果。
+  执行仓库 AGENTS.md 的测试数据与数据迁移规则。默认从空库、新卷、新账号和新场次验收。
+  涉及本机模拟器、进程或容器的验收，按 AGENTS.md「本机测试资源与收尾」记录归属、及时关闭和复查。
+  仅在用户明确说明本次需要数据迁移时，才把迁移工作写入提案、设计、任务或验收标准。
+
+rules:
+  proposal:
+    - 标明主责与关联M00–M24模块、当前代码证据和不附带范围；先复用现有能力。
+  design:
+    - 包含或链接docs/architecture-review.md要求的架构评审，明确状态/事务所有者、依赖与组合、提交/失败/生命周期以及复用取舍。
+    - 写清模块负责和不负责什么、功能为何应放在此处，按共享不变量、完整生命周期、变化原因与依赖方向评审模块应合并、分离还是组合；不得先堆代码再补评审。
+    - 关键边界未定不得派实现；不得用文件拆分、公共管理器或历史耦合替代边界论证。
+  tasks:
+    - 开发任务须以主代理已签架构评审为前置；范围扩大先复审，开发自测/独立测试/主签分开。
+    - 派单链接已签评审及获准模块/入口、生命周期所有者；接手先核，缺失或越界暂停相关实现。交付须核实际归属、依赖与生命周期，并说明新增代码/状态/抽象的必要性，功能通过不代替结构验收。
+
+# Project context (optional)
+# Add only constraints that should guide OpenSpec artifacts and workflows.
+# Include constraints an agent cannot infer by reading the code.
+# Keep general project documentation and discoverable codebase facts out.
+# Example:
+#   context: |
+#     Designs and tasks must cover Windows, macOS, and Linux
+#     Write all artifacts in Spanish
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always state what is out of scope
+#     tasks:
+#       - Break tasks into chunks of max 2 hours
+
+# Per-operation guidance (optional)
+# Add advisory guidance for how apply and archive work should be conducted.
+# This is separate from artifact rules above.
+# Example:
+#   operations:
+#     apply:
+#       guidance:
+#         - Keep test summaries concise
+#     archive:
+#       guidance:
+#         - Summarize the archive outcome before finishing

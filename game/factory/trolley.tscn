@@ -1,0 +1,62 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://pump/landmark_mesh.gd" id="kit"]
+[sub_resource type="StandardMaterial3D" id="gold"]
+albedo_color = Color(0.86,0.49,0.15,1)
+metallic = 0.45
+roughness = 0.62
+[sub_resource type="StandardMaterial3D" id="iron"]
+albedo_color = Color(0.13,0.20,0.20,1)
+metallic = 0.45
+roughness = 0.62
+[sub_resource type="BoxMesh" id="bed"]
+size = Vector3(3.4,0.45,2.1)
+material = SubResource("gold")
+[sub_resource type="CylinderMesh" id="wheel"]
+material = SubResource("iron")
+top_radius=0.45
+bottom_radius=0.45
+height=0.32
+radial_segments=12
+[node name="Trolley" type="Node3D"]
+
+[node name="Bed" type="MeshInstance3D" parent="."]
+position = Vector3(0,0.9,0)
+mesh = SubResource("bed")
+
+
+[node name="Wheel1" type="MeshInstance3D" parent="."]
+position = Vector3(-1.1,0.48,-0.88)
+mesh = SubResource("wheel")
+rotation = Vector3(1.5708,0,0)
+
+[node name="Wheel2" type="MeshInstance3D" parent="."]
+position = Vector3(-1.1,0.48,0.88)
+mesh = SubResource("wheel")
+rotation = Vector3(1.5708,0,0)
+
+[node name="Wheel3" type="MeshInstance3D" parent="."]
+position = Vector3(1.1,0.48,-0.88)
+mesh = SubResource("wheel")
+rotation = Vector3(1.5708,0,0)
+
+[node name="Wheel4" type="MeshInstance3D" parent="."]
+position = Vector3(1.1,0.48,0.88)
+mesh = SubResource("wheel")
+rotation = Vector3(1.5708,0,0)
+
+[node name="ServiceBoiler" type="MeshInstance3D" parent="."]
+position=Vector3(-0.65,1.2,0)
+script=ExtResource("kit")
+module="Fuel"
+
+[node name="Winch" type="MeshInstance3D" parent="."]
+position=Vector3(0.75,1.2,0)
+script=ExtResource("kit")
+module="Coil"
+
+[node name="Name" type="Label3D" parent="."]
+position = Vector3(0,3,0)
+billboard = 1
+pixel_size = 0.015
+outline_size = 5
+text = "检修车"

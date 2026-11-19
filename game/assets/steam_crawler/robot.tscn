@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/steam_crawler/model.glb" id="1"]
+[ext_resource type="Script" path="res://assets/steam_crawler/robot.gd" id="2"]
+
+[node name="SteamCrawler" type="Node3D"]
+script = ExtResource("2")
+
+[node name="Model" parent="." instance=ExtResource("1")]
+rotation = Vector3(0, 3.14159265, 0)

@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://base/facility_recovery.gd" id="1"]
+
+[node name="FacilityRecovery" type="VBoxContainer"]
+visible = false
+script = ExtResource("1")
+
+[node name="ChooseDamage" type="OptionButton" parent="."]
+unique_name_in_owner = true
+
+[node name="DamageSummary" type="Label" parent="."]
+unique_name_in_owner = true
+autowrap_mode = 3
+
+[node name="RepairFacility" type="Button" parent="."]
+unique_name_in_owner = true
+
+[node name="RepairResult" type="Label" parent="."]
+unique_name_in_owner = true
+autowrap_mode = 3
+
+[node name="Due" type="Timer" parent="."]
+one_shot = true

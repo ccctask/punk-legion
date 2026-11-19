@@ -1,0 +1,191 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://battle/role_select.tscn" id="rolebar"]
+[ext_resource type="PackedScene" path="res://camp/coil_quay.tscn" id="quay"]
+[ext_resource type="Script" path="res://camp/camp.gd" id="1"]
+[ext_resource type="PackedScene" path="res://camp/brass_yard.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://assets/base_art/CoalFoundry.tscn" id="ore"]
+[ext_resource type="PackedScene" path="res://assets/base_art/ArcDynamo.tscn" id="winder"]
+[sub_resource type="Environment" id="env"]
+background_mode = 1
+background_color = Color(0.07,0.14,0.16,1)
+ambient_light_source = 2
+ambient_light_color = Color(0.90,0.96,0.92,1)
+ambient_light_energy = 0.72
+[sub_resource type="SystemFont" id="font"]
+font_names = PackedStringArray("Microsoft YaHei UI","Noto Sans CJK SC","Droid Sans Fallback")
+[sub_resource type="Theme" id="theme"]
+default_font = SubResource("font")
+default_font_size = 18
+[sub_resource type="StyleBoxFlat" id="panel"]
+bg_color = Color(0.075,0.14,0.15,0.97)
+content_margin_left = 16.0
+content_margin_right = 16.0
+content_margin_top = 12.0
+content_margin_bottom = 12.0
+[node name="CampContest" type="Node3D"]
+script = ExtResource("1")
+[node name="Camera" type="Camera3D" parent="."]
+position = Vector3(0,24,15)
+rotation_degrees = Vector3(-57.995,0,0)
+projection = 1
+size = 22.0
+environment = SubResource("env")
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-50,-35,0)
+light_color = Color(1.0,0.91,0.76,1)
+light_energy = 1.1
+shadow_enabled = true
+[node name="CoilQuay" parent="." instance=ExtResource("quay")]
+visible=false
+[node name="Switchyard" parent="." instance=ExtResource("2")]
+[node name="OreExtractor" parent="." instance=ExtResource("ore")]
+visible = false
+position = Vector3(15.8, 0.12, -4.8)
+rotation_degrees = Vector3(0, 152, 0)
+scale = Vector3(1.6,1.6,1.6)
+[node name="CoilExtractor" parent="." instance=ExtResource("winder")]
+visible = false
+position = Vector3(15.8, 0.12, -4.8)
+scale = Vector3(1.6,1.6,1.6)
+[node name="Units" type="Node3D" parent="."]
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 10
+[node name="Header" type="PanelContainer" parent="HUD"]
+anchor_right = 1.0
+offset_left = 12.0
+offset_right = -12.0
+offset_top = 10.0
+theme = SubResource("theme")
+theme_override_styles/panel = SubResource("panel")
+[node name="Row" type="HBoxContainer" parent="HUD/Header"]
+[node name="Title" type="Label" parent="HUD/Header/Row"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+text = "黄铜转运场"
+theme_override_font_sizes/font_size = 24
+[node name="Back" type="Button" parent="HUD/Header/Row"]
+unique_name_in_owner = true
+text = "返回地图"
+[node name="Lobby" type="PanelContainer" parent="HUD"]
+unique_name_in_owner = true
+anchor_left = 0.02
+anchor_top = 0.15
+anchor_right = 0.56
+anchor_bottom = 0.95
+theme = SubResource("theme")
+theme_override_styles/panel = SubResource("panel")
+[node name="Column" type="VBoxContainer" parent="HUD/Lobby"]
+[node name="Info" type="Label" parent="HUD/Lobby/Column"]
+unique_name_in_owner = true
+autowrap_mode = 3
+[node name="Budget" type="Label" parent="HUD/Lobby/Column"]
+unique_name_in_owner = true
+visible = false
+autowrap_mode = 3
+[node name="Scroll" type="ScrollContainer" parent="HUD/Lobby/Column"]
+horizontal_scroll_mode = 0
+unique_name_in_owner = true
+visible = false
+size_flags_vertical = 3
+[node name="Roster" type="VBoxContainer" parent="HUD/Lobby/Column/Scroll"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+[node name="Start" type="Button" parent="HUD/Lobby/Column"]
+visible = false
+unique_name_in_owner = true
+text = "投入所选编队"
+[node name="Supply" type="Label" parent="HUD/Lobby/Column"]
+unique_name_in_owner = true
+visible = false
+autowrap_mode = 3
+[node name="Station" type="Button" parent="HUD/Lobby/Column"]
+visible = false
+unique_name_in_owner = true
+text = "保存驻军和固定炮塔"
+[node name="ClaimQuote" type="Label" parent="HUD/Lobby/Column"]
+unique_name_in_owner = true
+visible = false
+autowrap_mode = 3
+[node name="Industry" type="HBoxContainer" parent="HUD/Lobby/Column"]
+[node name="Extractor" type="Button" parent="HUD/Lobby/Column/Industry"]
+visible = false
+unique_name_in_owner = true
+size_flags_horizontal = 3
+text = "建设采集站"
+[node name="Claim" type="Button" parent="HUD/Lobby/Column/Industry"]
+visible = false
+unique_name_in_owner = true
+text = "领取营地产出"
+[node name="Feedback" type="Label" parent="HUD/Lobby/Column"]
+unique_name_in_owner = true
+autowrap_mode = 3
+[node name="Retry" type="Button" parent="HUD/Lobby/Column"]
+unique_name_in_owner = true
+visible = false
+text = "重新连接"
+[node name="Quote" type="PanelContainer" parent="HUD"]
+unique_name_in_owner = true
+visible = false
+anchor_left = 0.02
+anchor_top = 0.19
+anchor_right = 0.56
+theme = SubResource("theme")
+theme_override_styles/panel = SubResource("panel")
+[node name="Layout" type="VBoxContainer" parent="HUD/Quote"]
+[node name="QuoteTitle" type="Label" parent="HUD/Quote/Layout"]
+unique_name_in_owner = true
+theme_override_font_sizes/font_size = 23
+[node name="QuoteBody" type="Label" parent="HUD/Quote/Layout"]
+unique_name_in_owner = true
+autowrap_mode = 3
+[node name="Reply" type="Label" parent="HUD/Quote/Layout"]
+unique_name_in_owner = true
+autowrap_mode = 3
+[node name="Actions" type="HBoxContainer" parent="HUD/Quote/Layout"]
+[node name="CancelBuild" type="Button" parent="HUD/Quote/Layout/Actions"]
+unique_name_in_owner = true
+text = "返回指挥台"
+[node name="ConfirmBuild" type="Button" parent="HUD/Quote/Layout/Actions"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+text = "确认建造"
+[node name="Fight" type="PanelContainer" parent="HUD"]
+unique_name_in_owner = true
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_right = -12.0
+grow_vertical = 0
+offset_top = -141.0
+offset_bottom = -8.0
+theme = SubResource("theme")
+theme_override_styles/panel = SubResource("panel")
+[node name="Column" type="VBoxContainer" parent="HUD/Fight"]
+[node name="Status" type="Label" parent="HUD/Fight/Column"]
+unique_name_in_owner = true
+autowrap_mode = 3
+[node name="RoleSelect" parent="HUD/Fight/Column" instance=ExtResource("rolebar")]
+unique_name_in_owner=true
+[node name="Actions" type="HFlowContainer" parent="HUD/Fight/Column"]
+[node name="All" type="Button" parent="HUD/Fight/Column/Actions"]
+unique_name_in_owner = true
+text = "全选"
+[node name="Core" type="Button" parent="HUD/Fight/Column/Actions"]
+unique_name_in_owner = true
+text = "前往核心"
+[node name="Focus" type="Button" parent="HUD/Fight/Column/Actions"]
+unique_name_in_owner = true
+text = "集火最近敌机"
+[node name="Repair" type="Button" parent="HUD/Fight/Column/Actions"]
+unique_name_in_owner = true
+text = "战地维修"
+[node name="Retreat" type="Button" parent="HUD/Fight/Column/Actions"]
+unique_name_in_owner = true
+text = "撤退"
+[node name="Reconnect" type="Button" parent="HUD/Fight/Column/Actions"]
+unique_name_in_owner = true
+text = "重连原场"
+[node name="HTTP" type="HTTPRequest" parent="."]
+timeout = 7.0

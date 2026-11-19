@@ -1,0 +1,45 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="shell"]
+albedo_color = Color(0.05,0.61,0.63,1)
+
+[sub_resource type="StandardMaterial3D" id="brass"]
+albedo_color = Color(1,0.62,0.15,1)
+
+[sub_resource type="CylinderMesh" id="reflector"]
+material = SubResource("shell")
+top_radius = 0.27
+bottom_radius = 0.105
+height = 0.11
+radial_segments = 16
+rings = 0
+cap_top = false
+
+[sub_resource type="CylinderMesh" id="receiver"]
+material = SubResource("brass")
+top_radius = 0.036
+bottom_radius = 0.046
+height = 0.21
+radial_segments = 8
+rings = 0
+
+[sub_resource type="StandardMaterial3D" id="inner"]
+albedo_color = Color(0.09,0.78,0.73,1)
+cull_mode = 1
+
+[node name="SurveyRadar" type="Node3D"]
+
+[node name="Aerial" type="Node3D" parent="."]
+position = Vector3(0,0.4,0)
+rotation = Vector3(0.67,0.4,0.45)
+
+[node name="Dish" type="MeshInstance3D" parent="Aerial"]
+mesh = SubResource("reflector")
+
+[node name="DishInside" type="MeshInstance3D" parent="Aerial"]
+mesh = SubResource("reflector")
+material_override = SubResource("inner")
+
+[node name="Pickup" type="MeshInstance3D" parent="Aerial"]
+position = Vector3(0,0.061,0)
+mesh = SubResource("receiver")

@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/base_art/workshop.tscn" id="shed"]
+[ext_resource type="PackedScene" path="res://assets/steam_crawler/robot.tscn" id="crawler"]
+
+[node name="MotorPool" type="Node3D"]
+
+[node name="ServiceShed" parent="." instance=ExtResource("shed")]
+position = Vector3(0.21,0,0.22)
+scale = Vector3(0.62,0.67,0.62)
+
+[node name="ParkedCrawler" parent="." instance=ExtResource("crawler")]
+position = Vector3(-0.4,0,-0.57)
+rotation = Vector3(0,-0.55,0)
+scale = Vector3(0.38,0.38,0.38)

@@ -1,0 +1,3 @@
+- [x] 1.1 房间与档案保存个人参战事实，覆盖主动退出、缺席、清扫、同版本重启及幂等结算。见[五组复测](verification/room/README.md)。
+- [x] 1.2 Godot 机库战报、时间线及高光显示实际探索结果，回归训练结果。见[七场小屏回归及实图](verification/ui/README.md)。
+- [x] 1.3 主代理用新档案核对已参战和未参战的计数、战损、释放和真实战报入口。见[独立主验](verification/root-review.md)。

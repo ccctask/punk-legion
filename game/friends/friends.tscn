@@ -1,0 +1,114 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://friends/friends.gd" id="1"]
+[sub_resource type="SystemFont" id="font"]
+font_names = PackedStringArray("Microsoft YaHei UI","Noto Sans CJK SC","Droid Sans Fallback")
+[sub_resource type="Theme" id="theme"]
+default_font = SubResource("font")
+default_font_size = 17
+[node name="Friends" type="CanvasLayer"]
+layer = 9
+script = ExtResource("1")
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.075,0.14,0.15,1)
+theme = SubResource("theme")
+[node name="Layout" type="VBoxContainer" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 17
+offset_top = 10
+offset_right = -17
+offset_bottom = -10
+[node name="Header" type="HBoxContainer" parent="Background/Layout"]
+[node name="Title" type="Label" parent="Background/Layout/Header"]
+text = "好友与援军"
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 26
+[node name="Reload" type="Button" parent="Background/Layout/Header"]
+unique_name_in_owner = true
+visible = false
+text = "重新连接"
+[node name="Back" type="Button" parent="Background/Layout/Header"]
+unique_name_in_owner = true
+text = "返回档案"
+[node name="Body" type="HBoxContainer" parent="Background/Layout"]
+size_flags_vertical = 3
+[node name="FriendsList" type="VBoxContainer" parent="Background/Layout/Body"]
+custom_minimum_size = Vector2(245,0)
+[node name="FriendName" type="LineEdit" parent="Background/Layout/Body/FriendsList"]
+unique_name_in_owner = true
+placeholder_text = "输入好友账号"
+[node name="Request" type="Button" parent="Background/Layout/Body/FriendsList"]
+unique_name_in_owner = true
+text = "申请好友"
+[node name="Pals" type="ItemList" parent="Background/Layout/Body/FriendsList"]
+unique_name_in_owner = true
+size_flags_vertical = 3
+[node name="Actions" type="HBoxContainer" parent="Background/Layout/Body/FriendsList"]
+[node name="Accept" type="Button" parent="Background/Layout/Body/FriendsList/Actions"]
+unique_name_in_owner = true
+text = "同意"
+[node name="Remove" type="Button" parent="Background/Layout/Body/FriendsList/Actions"]
+unique_name_in_owner = true
+text = "移除 / 拒绝"
+[node name="Visit" type="Button" parent="Background/Layout/Body/FriendsList"]
+unique_name_in_owner = true
+text = "参观基地"
+[node name="Work" type="VBoxContainer" parent="Background/Layout/Body"]
+size_flags_horizontal = 3
+[node name="Tabs" type="TabContainer" parent="Background/Layout/Body/Work"]
+size_flags_vertical = 3
+[node name="援军" type="VBoxContainer" parent="Background/Layout/Body/Work/Tabs"]
+[node name="Rule" type="Label" parent="Background/Layout/Body/Work/Tabs/援军"]
+text = "每处营地每方共用 12 台、24 点。援军协防受损，本次送修抵扣 1 结构材料，机主只付 1 通用零件。协攻受损按普通报价维修。"
+autowrap_mode = 2
+[node name="Types" type="HBoxContainer" parent="Background/Layout/Body/Work/Tabs/援军"]
+[node name="Robot" type="OptionButton" parent="Background/Layout/Body/Work/Tabs/援军/Types"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+[node name="Site" type="OptionButton" parent="Background/Layout/Body/Work/Tabs/援军/Types"]
+unique_name_in_owner=true
+[node name="Side" type="OptionButton" parent="Background/Layout/Body/Work/Tabs/援军/Types"]
+unique_name_in_owner = true
+[node name="Offer" type="Button" parent="Background/Layout/Body/Work/Tabs/援军/Types"]
+unique_name_in_owner = true
+text = "提议派遣"
+[node name="Aids" type="ItemList" parent="Background/Layout/Body/Work/Tabs/援军"]
+unique_name_in_owner = true
+size_flags_vertical = 3
+[node name="Respond" type="HBoxContainer" parent="Background/Layout/Body/Work/Tabs/援军"]
+[node name="AgreeAid" type="Button" parent="Background/Layout/Body/Work/Tabs/援军/Respond"]
+unique_name_in_owner = true
+text = "接受"
+[node name="RejectAid" type="Button" parent="Background/Layout/Body/Work/Tabs/援军/Respond"]
+unique_name_in_owner = true
+text = "拒绝"
+[node name="Recall" type="Button" parent="Background/Layout/Body/Work/Tabs/援军/Respond"]
+unique_name_in_owner = true
+text = "撤销 / 召回"
+[node name="Join" type="Button" parent="Background/Layout/Body/Work/Tabs/援军/Respond"]
+unique_name_in_owner = true
+text = "入场指挥"
+[node name="装配分享" type="VBoxContainer" parent="Background/Layout/Body/Work/Tabs"]
+[node name="Select" type="HBoxContainer" parent="Background/Layout/Body/Work/Tabs/装配分享"]
+[node name="Design" type="OptionButton" parent="Background/Layout/Body/Work/Tabs/装配分享/Select"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+[node name="Share" type="Button" parent="Background/Layout/Body/Work/Tabs/装配分享/Select"]
+unique_name_in_owner = true
+text = "分享给好友"
+[node name="Shares" type="ItemList" parent="Background/Layout/Body/Work/Tabs/装配分享"]
+unique_name_in_owner = true
+size_flags_vertical = 3
+[node name="Definition" type="Label" parent="Background/Layout/Body/Work/Tabs/装配分享"]
+unique_name_in_owner = true
+autowrap_mode = 2
+[node name="Save" type="Button" parent="Background/Layout/Body/Work/Tabs/装配分享"]
+unique_name_in_owner = true
+text = "保存到我的方案栏"
+[node name="Hint" type="Label" parent="Background/Layout"]
+unique_name_in_owner = true
+autowrap_mode = 2
+[node name="HTTP" type="HTTPRequest" parent="."]
+timeout = 7.0

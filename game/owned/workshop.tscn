@@ -1,0 +1,312 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="PackedScene" path="res://client/page_refresh.tscn" id="page_refresh"]
+[ext_resource type="PackedScene" path="res://owned/hull_number.tscn" id="number"]
+[ext_resource type="PackedScene" path="res://owned/apply_preview.tscn" id="fit_preview"]
+[ext_resource type="PackedScene" path="res://owned/orders.tscn" id="orders"]
+
+[ext_resource type="PackedScene" path="res://assets/steam_crawler/robot.tscn" id="1"]
+[ext_resource type="Script" path="res://owned/workshop.gd" id="2"]
+
+[sub_resource type="Environment" id="Env"]
+background_mode = 1
+background_color = Color(0.06, 0.13, 0.14, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.88, 0.94, 1, 1)
+ambient_light_energy = 0.65
+
+[sub_resource type="StandardMaterial3D" id="Mat"]
+albedo_color = Color(0.2, 0.38, 0.35, 1)
+
+[sub_resource type="BoxMesh" id="Stage"]
+size = Vector3(3.8, 0.18, 3.2)
+material = SubResource("Mat")
+
+[sub_resource type="StyleBoxFlat" id="PanelStyle"]
+bg_color = Color(0.055,0.10,0.11,0.98)
+content_margin_left = 14
+content_margin_right = 14
+content_margin_top = 12
+content_margin_bottom = 10
+
+
+[node name="Workshop" type="Node3D"]
+script = ExtResource("2")
+
+[node name="World" type="WorldEnvironment" parent="."]
+environment = SubResource("Env")
+
+[node name="Platform" type="MeshInstance3D" parent="."]
+position = Vector3(0,-0.09,0)
+mesh = SubResource("Stage")
+
+[node name="Robot" parent="." instance=ExtResource("1")]
+
+[node name="Light" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-50,-36,0)
+light_energy = 1.1
+shadow_enabled = true
+
+[node name="Camera" type="Camera3D" parent="."]
+position = Vector3(4.5,3.8,-6)
+projection = 1
+size = 4.4
+current = true
+
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer=4
+[node name="Panel" type="PanelContainer" parent="HUD"]
+anchor_bottom=1.0
+offset_right=446.0
+theme_override_styles/panel=SubResource("PanelStyle")
+[node name="Scroll" type="ScrollContainer" parent="HUD/Panel"]
+horizontal_scroll_mode=0
+[node name="Body" type="VBoxContainer" parent="HUD/Panel/Scroll"]
+size_flags_horizontal=3
+theme_override_constants/separation=5
+
+[node name="Top" type="HBoxContainer" parent="HUD/Panel/Scroll/Body"]
+unique_name_in_owner=true
+
+
+[node name="Title" type="Label" parent="HUD/Panel/Scroll/Body/Top"]
+unique_name_in_owner=true
+text="自有机体工坊"
+size_flags_horizontal=3
+theme_override_font_sizes/font_size=23
+
+[node name="Back" type="Button" parent="HUD/Panel/Scroll/Body/Top"]
+mouse_filter = 1
+unique_name_in_owner=true
+text="返回档案"
+
+
+[node name="Stock" type="Label" parent="HUD/Panel/Scroll/Body"]
+unique_name_in_owner=true
+
+[node name="ReadNotice" type="Label" parent="HUD/Panel/Scroll/Body"]
+unique_name_in_owner=true
+visible=false
+autowrap_mode=3
+[node name="ReadRetry" type="Button" parent="HUD/Panel/Scroll/Body"]
+mouse_filter = 1
+unique_name_in_owner=true
+visible=false
+
+[node name="RecoveredArm" type="Label" parent="HUD/Panel/Scroll/Body"]
+unique_name_in_owner=true
+visible=false
+autowrap_mode=3
+[node name="ClaimPumpArm" type="Button" parent="HUD/Panel/Scroll/Body"]
+mouse_filter = 1
+unique_name_in_owner=true
+visible=false
+text="领取泵房维修臂"
+[node name="Shop" type="Button" parent="HUD/Panel/Scroll/Body"]
+mouse_filter = 1
+unique_name_in_owner=true
+text="涂装与方案栏商店"
+
+[node name="Mode" type="OptionButton" parent="HUD/Panel/Scroll/Body"]
+mouse_filter = 1
+action_mode = 1
+unique_name_in_owner=true
+
+
+[node name="Draft" type="VBoxContainer" parent="HUD/Panel/Scroll/Body"]
+unique_name_in_owner=true
+
+
+[node name="Design" type="OptionButton" parent="HUD/Panel/Scroll/Body/Draft"]
+mouse_filter = 1
+action_mode = 1
+unique_name_in_owner=true
+
+
+[node name="Name" type="LineEdit" parent="HUD/Panel/Scroll/Body/Draft"]
+unique_name_in_owner=true
+placeholder_text="方案名称"
+text="履带工程组"
+max_length=24
+
+[node name="DraftHull" type="OptionButton" parent="HUD/Panel/Scroll/Body/Draft"]
+mouse_filter = 1
+action_mode = 1
+unique_name_in_owner=true
+
+[node name="Core" type="OptionButton" parent="HUD/Panel/Scroll/Body/Draft"]
+mouse_filter = 1
+action_mode = 1
+unique_name_in_owner=true
+
+
+[node name="Head" type="OptionButton" parent="HUD/Panel/Scroll/Body/Draft"]
+mouse_filter = 1
+action_mode = 1
+unique_name_in_owner=true
+
+
+[node name="Weapon" type="OptionButton" parent="HUD/Panel/Scroll/Body/Draft"]
+mouse_filter = 1
+action_mode = 1
+unique_name_in_owner=true
+
+
+[node name="Utility" type="OptionButton" parent="HUD/Panel/Scroll/Body/Draft"]
+mouse_filter = 1
+action_mode = 1
+unique_name_in_owner=true
+
+[node name="Armor" type="OptionButton" parent="HUD/Panel/Scroll/Body/Draft"]
+mouse_filter = 1
+action_mode = 1
+unique_name_in_owner=true
+
+[node name="Survey" type="OptionButton" parent="HUD/Panel/Scroll/Body/Draft"]
+mouse_filter = 1
+action_mode = 1
+unique_name_in_owner=true
+visible=false
+
+[node name="DraftStats" type="Label" parent="HUD/Panel/Scroll/Body/Draft"]
+unique_name_in_owner=true
+autowrap_mode=2
+[node name="Save" type="Button" parent="HUD/Panel/Scroll/Body/Draft"]
+mouse_filter = 1
+unique_name_in_owner=true
+text="保存为新版本"
+
+
+[node name="BuildName" type="LineEdit" parent="HUD/Panel/Scroll/Body/Draft"]
+unique_name_in_owner=true
+placeholder_text="新机体名称"
+text="履带一号"
+max_length=24
+
+[node name="Build" type="Button" parent="HUD/Panel/Scroll/Body/Draft"]
+mouse_filter = 1
+unique_name_in_owner=true
+text="按已保存版本制造"
+
+
+[node name="Replace" type="Button" parent="HUD/Panel/Scroll/Body/Draft"]
+mouse_filter = 1
+unique_name_in_owner=true
+text="用当前草案替换选中方案的位置"
+[node name="Remove" type="Button" parent="HUD/Panel/Scroll/Body/Draft"]
+mouse_filter = 1
+unique_name_in_owner=true
+text="移出常用位置（保留历史）"
+[node name="CopyDesign" type="Button" parent="HUD/Panel/Scroll/Body/Draft"]
+mouse_filter = 1
+unique_name_in_owner=true
+text="复制分享方案"
+[node name="ImportDesign" type="Button" parent="HUD/Panel/Scroll/Body/Draft"]
+mouse_filter = 1
+unique_name_in_owner=true
+text="预览剪贴板中的方案"
+
+[node name="Garage" type="VBoxContainer" parent="HUD/Panel/Scroll/Body"]
+unique_name_in_owner=true
+
+
+[node name="Pins" type="HBoxContainer" parent="HUD/Panel/Scroll/Body/Garage"]
+[node name="OnlyFavorites" type="CheckButton" parent="HUD/Panel/Scroll/Body/Garage/Pins"]
+mouse_filter = 1
+unique_name_in_owner=true
+text="仅看收藏"
+[node name="Favorite" type="Button" parent="HUD/Panel/Scroll/Body/Garage/Pins"]
+mouse_filter = 1
+unique_name_in_owner=true
+text="收藏机体"
+
+[node name="Robot" type="OptionButton" parent="HUD/Panel/Scroll/Body/Garage"]
+mouse_filter = 1
+action_mode = 1
+unique_name_in_owner=true
+
+
+[node name="ApplyDesign" type="Button" parent="HUD/Panel/Scroll/Body/Garage"]
+mouse_filter = 1
+unique_name_in_owner=true
+text="把所选常用方案应用到此机体"
+
+[node name="HullNumber" parent="HUD/Panel/Scroll/Body/Garage" instance=ExtResource("number")]
+unique_name_in_owner = true
+[node name="Identity" type="Label" parent="HUD/Panel/Scroll/Body/Garage"]
+unique_name_in_owner=true
+
+
+[node name="Slot" type="OptionButton" parent="HUD/Panel/Scroll/Body/Garage"]
+mouse_filter = 1
+action_mode = 1
+unique_name_in_owner=true
+
+
+[node name="Item" type="OptionButton" parent="HUD/Panel/Scroll/Body/Garage"]
+mouse_filter = 1
+action_mode = 1
+unique_name_in_owner=true
+
+[node name="CombatPreview" type="Label" parent="HUD/Panel/Scroll/Body/Garage"]
+unique_name_in_owner=true
+autowrap_mode=3
+
+[node name="Install" type="Button" parent="HUD/Panel/Scroll/Body/Garage"]
+mouse_filter = 1
+unique_name_in_owner=true
+text="应用更换或拆卸"
+
+
+[node name="RefitRetry" type="Button" parent="HUD/Panel/Scroll/Body/Garage"]
+mouse_filter = 1
+unique_name_in_owner=true
+visible=false
+text="核对本次换装"
+[node name="RefitNotice" type="Label" parent="HUD/Panel/Scroll/Body/Garage"]
+unique_name_in_owner=true
+visible=false
+autowrap_mode=3
+
+[node name="HullTarget" type="OptionButton" parent="HUD/Panel/Scroll/Body/Garage"]
+mouse_filter = 1
+action_mode = 1
+unique_name_in_owner=true
+
+[node name="HullQuote" type="Label" parent="HUD/Panel/Scroll/Body/Garage"]
+unique_name_in_owner=true
+autowrap_mode=2
+[node name="ApplyHull" type="Button" parent="HUD/Panel/Scroll/Body/Garage"]
+mouse_filter = 1
+unique_name_in_owner=true
+text="确认更换底盘"
+[node name="Orders" parent="HUD/Panel/Scroll/Body/Garage" instance=ExtResource("orders")]
+unique_name_in_owner=true
+
+[node name="Hint" type="Label" parent="HUD/Panel/Scroll/Body"]
+unique_name_in_owner=true
+autowrap_mode=3
+
+[node name="Status" type="Label" parent="HUD/Panel/Scroll/Body"]
+unique_name_in_owner=true
+autowrap_mode=3
+
+[node name="Retry" type="Button" parent="HUD/Panel/Scroll/Body"]
+mouse_filter = 1
+unique_name_in_owner=true
+text="重试上次请求"
+
+
+[node name="ApplyPreview" parent="HUD" instance=ExtResource("fit_preview")]
+unique_name_in_owner=true
+
+[node name="RecoveryTimer" type="Timer" parent="."]
+one_shot=true
+wait_time=0.6
+
+[node name="HTTP" type="HTTPRequest" parent="."]
+timeout=6.0
+accept_gzip=false
+
+[node name="PageRefresh" parent="." instance=ExtResource("page_refresh")]

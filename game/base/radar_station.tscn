@@ -1,0 +1,87 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/base_art/BinDepot.tscn" id="depot"]
+[ext_resource type="Script" path="res://base/radar_station.gd" id="script"]
+
+[sub_resource type="StandardMaterial3D" id="Brass"]
+albedo_color = Color(0.90,0.56,0.22,1)
+roughness = 0.65
+
+[sub_resource type="StandardMaterial3D" id="Enamel"]
+albedo_color = Color(0.15,0.49,0.51,1)
+cull_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="Light"]
+albedo_color = Color(0.94,0.91,0.57,1)
+emission_enabled = true
+emission = Color(0.62,0.84,0.41,1)
+
+[sub_resource type="CylinderMesh" id="Mast"]
+material = SubResource("Brass")
+top_radius = 0.075
+bottom_radius = 0.12
+height = 0.52
+radial_segments = 12
+rings = 0
+
+[sub_resource type="SphereMesh" id="Dish"]
+material = SubResource("Enamel")
+is_hemisphere = true
+radius = 0.48
+height = 0.19
+radial_segments = 24
+rings = 5
+
+[sub_resource type="TorusMesh" id="Rim"]
+material = SubResource("Brass")
+inner_radius = 0.43
+outer_radius = 0.49
+rings = 24
+ring_segments = 6
+
+[sub_resource type="CylinderMesh" id="Feed"]
+material = SubResource("Brass")
+top_radius = 0.025
+bottom_radius = 0.035
+height = 0.46
+radial_segments = 8
+rings = 0
+
+[sub_resource type="SphereMesh" id="Beacon"]
+material = SubResource("Light")
+radius = 0.075
+height = 0.15
+radial_segments = 10
+rings = 4
+
+[node name="RadarStation" type="Node3D"]
+script = ExtResource("script")
+
+[node name="EquipmentCabin" parent="." instance=ExtResource("depot")]
+position = Vector3(-0.08,0,0)
+scale = Vector3(0.92,0.55,0.78)
+
+[node name="Mast" type="MeshInstance3D" parent="."]
+position = Vector3(0.22,0.93,0)
+mesh = SubResource("Mast")
+
+[node name="DishMount" type="Node3D" parent="."]
+position = Vector3(0.22,1.35,0)
+
+[node name="Receiver" type="Node3D" parent="DishMount"]
+rotation = Vector3(-0.92,0,0)
+
+[node name="Back" type="MeshInstance3D" parent="DishMount/Receiver"]
+rotation = Vector3(3.141593,0,0)
+mesh = SubResource("Dish")
+
+[node name="Rim" type="MeshInstance3D" parent="DishMount/Receiver"]
+mesh = SubResource("Rim")
+
+[node name="Feed" type="MeshInstance3D" parent="DishMount/Receiver"]
+position = Vector3(0,0.055,0)
+mesh = SubResource("Feed")
+
+[node name="Beacon" type="MeshInstance3D" parent="DishMount/Receiver"]
+position = Vector3(0,0.29,0)
+mesh = SubResource("Beacon")

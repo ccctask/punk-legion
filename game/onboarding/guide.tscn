@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://onboarding/guide.gd" id="1"]
+
+[node name="Guide" type="VBoxContainer"]
+script = ExtResource("1")
+[node name="Fold" type="Button" parent="."]
+mouse_filter = 1
+text = "首玩与日常 ▾"
+[node name="Content" type="VBoxContainer" parent="."]
+[node name="Next" type="Label" parent="Content"]
+autowrap_mode = 3
+text = "正在读取机组进度…"
+[node name="Go" type="Button" parent="Content"]
+mouse_filter = 1
+disabled = true
+text = "下一步"
+[node name="Daily" type="Label" parent="Content"]
+autowrap_mode = 3
+text = "正在读取今日目标…"
+[node name="Recovery" type="Button" parent="Content"]
+mouse_filter = 1
+visible = false
+text = "查看检修与救援"
+[node name="Solo" type="Button" parent="Content"]
+mouse_filter = 1
+text = "日常 · 单人回收"
+[node name="Party" type="Button" parent="Content"]
+mouse_filter = 1
+text = "日常 · 找队友 / 邀好友"
+[node name="Return" type="Button" parent="Content"]
+mouse_filter = 1
+text = "离线经营摘要"
+[node name="Statement" type="Label" parent="Content"]
+visible = false
+autowrap_mode = 3
+[node name="HTTP" type="HTTPRequest" parent="."]
+timeout = 6.0
+
+

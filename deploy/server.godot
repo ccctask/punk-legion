@@ -1,0 +1,14 @@
+config_version=5
+[application]
+config/name="PunkLegion Room"
+run/main_scene="res://net/server.tscn"
+[autoload]
+Room="*res://net/room.gd"
+Solo="*res://net/solo.gd"
+Party="*res://net/party.gd"
+Camp="*res://net/camp.gd"
+Treasure="*res://net/treasure.gd"
+[physics]
+common/physics_ticks_per_second=20
+[rendering]
+renderer/rendering_method="gl_compatibility"

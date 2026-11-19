@@ -1,0 +1,4 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://assets/salvage/yard.gd" id="yard"]
+[node name="SalvageYard" type="Node3D"]
+script=ExtResource("yard")

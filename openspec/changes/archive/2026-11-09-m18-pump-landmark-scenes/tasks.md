@@ -1,0 +1,2 @@
+- [x] 1.1 场景资源呈现四处固定设施并保留现有模型和状态更新。见[普通场景回归](verification/check.gd)、[运行记录](verification/check.log)与[编辑器加载](verification/editor.log)。
+- [x] 1.2 主代理核实实例结构、坐标和正常加载，与1022冻结输入交叉核对。见[运行前层级与状态复核](verification/root-final.log)。六个地标相关源文件均已进入 1022 冻结清单。

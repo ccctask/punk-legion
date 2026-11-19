@@ -1,0 +1,10 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://profile/history.gd" id="1"]
+
+[node name="History" type="VBoxContainer"]
+script=ExtResource("1")
+[node name="Open" type="Button" parent="."]
+text="查看所选机体累计战绩"
+[node name="Summary" type="Label" parent="."]
+visible=false
+autowrap_mode=3

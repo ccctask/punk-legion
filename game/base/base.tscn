@@ -1,0 +1,172 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://client/page_refresh.tscn" id="page_refresh"]
+
+[ext_resource type="Script" path="res://base/base.gd" id="1"]
+[ext_resource type="PackedScene" path="res://onboarding/guide.tscn" id="guide"]
+[ext_resource type="PackedScene" path="res://base/production_panel.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://assets/base_art/terrain.tscn" id="terrain"]
+[ext_resource type="PackedScene" path="res://base/plaque_display.tscn" id="plaque"]
+[ext_resource type="PackedScene" path="res://base/plaque_stand.tscn" id="stand"]
+[ext_resource type="PackedScene" path="res://base/facility_recovery.tscn" id="facility_recovery"]
+[ext_resource type="PackedScene" path="res://camp/defense_alerts.tscn" id="defense_alerts"]
+[sub_resource type="Environment" id="Sky"]
+background_mode = 1
+background_color = Color(0.061,0.122,0.14,1)
+ambient_light_source = 2
+ambient_light_color = Color(0.88,0.91,0.94,1)
+ambient_light_energy = 0.66
+[sub_resource type="StandardMaterial3D" id="TileMat"]
+vertex_color_use_as_albedo = true
+[sub_resource type="BoxMesh" id="Tile"]
+material = SubResource("TileMat")
+size = Vector3(0.96,0.14,0.96)
+[sub_resource type="StandardMaterial3D" id="RoadMat"]
+albedo_color=Color(0.91,0.64,0.27,1)
+[sub_resource type="BoxMesh" id="RoadInset"]
+size=Vector3(0.62,0.02,0.62)
+material=SubResource("RoadMat")
+[sub_resource type="StandardMaterial3D" id="CursorMat"]
+transparency = 1
+albedo_color = Color(1,0.78,0.23,0.75)
+[sub_resource type="BoxMesh" id="CursorMesh"]
+material = SubResource("CursorMat")
+size = Vector3(0.92,0.12,0.92)
+
+[node name="PrivateBase" type="Node3D"]
+script = ExtResource("1")
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Sky")
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-48,145,0)
+light_energy = 0.56
+shadow_enabled = true
+[node name="Camera" type="Camera3D" parent="."]
+projection = 1
+size = 12.7
+current = true
+[node name="Terrain" parent="." instance=ExtResource("terrain")]
+[node name="Tiles" type="MultiMeshInstance3D" parent="."]
+[node name="PowerRoads" type="MultiMeshInstance3D" parent="."]
+visible=false
+[node name="PowerRoadTemplate" type="MeshInstance3D" parent="."]
+visible=false
+mesh=SubResource("RoadInset")
+[node name="TileTemplate" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("Tile")
+[node name="HomeShowcase" type="Node3D" parent="."]
+unique_name_in_owner=true
+[node name="PlaqueStand" parent="." instance=ExtResource("stand")]
+position=Vector3(-2,0,-4.45)
+rotation_degrees=Vector3(0,-149,0)
+visible=false
+[node name="Buildings" type="Node3D" parent="."]
+[node name="Cursor" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CursorMesh")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 4
+[node name="DefenseAlerts" parent="HUD" instance=ExtResource("defense_alerts")]
+unique_name_in_owner = true
+offset_left = 12
+offset_top = 95
+[node name="PlaqueDisplay" parent="HUD" instance=ExtResource("plaque")]
+unique_name_in_owner = true
+visible = false
+[node name="Panel" type="PanelContainer" parent="HUD"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -260
+[node name="Pad" type="MarginContainer" parent="HUD/Panel"]
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 10
+[node name="Scroll" type="ScrollContainer" parent="HUD/Panel/Pad"]
+horizontal_scroll_mode = 0
+[node name="Body" type="VBoxContainer" parent="HUD/Panel/Pad/Scroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+[node name="Title" type="Label" parent="HUD/Panel/Pad/Scroll/Body"]
+text = "私人基地"
+theme_override_font_sizes/font_size = 27
+[node name="Stats" type="Label" parent="HUD/Panel/Pad/Scroll/Body"]
+unique_name_in_owner = true
+autowrap_mode = 3
+[node name="Guide" parent="HUD/Panel/Pad/Scroll/Body" instance=ExtResource("guide")]
+unique_name_in_owner = true
+[node name="FacilityRecovery" parent="HUD/Panel/Pad/Scroll/Body" instance=ExtResource("facility_recovery")]
+unique_name_in_owner = true
+[node name="EconomyToggle" type="Button" parent="HUD/Panel/Pad/Scroll/Body"]
+mouse_filter = 1
+unique_name_in_owner = true
+text = "生产与研究"
+[node name="PlaqueOrders" type="Button" parent="HUD/Panel/Pad/Scroll/Body"]
+mouse_filter = 1
+unique_name_in_owner = true
+text = "委托制作战役铭牌"
+[node name="Explore" type="Button" parent="HUD/Panel/Pad/Scroll/Body"]
+mouse_filter = 1
+unique_name_in_owner = true
+text = "出击 · 锈轨回收场"
+[node name="Factory" type="Button" parent="HUD/Panel/Pad/Scroll/Body"]
+unique_name_in_owner = true
+visible = false
+text = "封闭工厂 · 护送检修车"
+[node name="Armory" type="Button" parent="HUD/Panel/Pad/Scroll/Body"]
+unique_name_in_owner = true
+visible = false
+text = "旧武器库 · 回收炮臂"
+[node name="WorldMap" type="Button" parent="HUD/Panel/Pad/Scroll/Body"]
+mouse_filter = 1
+unique_name_in_owner = true
+text = "公共区域图"
+[node name="Raids" type="Button" parent="HUD/Panel/Pad/Scroll/Body"]
+mouse_filter = 1
+unique_name_in_owner = true
+text = "基地防守"
+[node name="Economy" parent="HUD/Panel/Pad/Scroll/Body" instance=ExtResource("2")]
+unique_name_in_owner = true
+visible = false
+[node name="Mode" type="OptionButton" parent="HUD/Panel/Pad/Scroll/Body"]
+unique_name_in_owner = true
+[node name="EastLand" type="Label" parent="HUD/Panel/Pad/Scroll/Body"]
+unique_name_in_owner = true
+autowrap_mode = 3
+visible = false
+[node name="Type" type="OptionButton" parent="HUD/Panel/Pad/Scroll/Body"]
+unique_name_in_owner = true
+[node name="PowerLegend" type="Label" parent="HUD/Panel/Pad/Scroll/Body"]
+unique_name_in_owner = true
+visible = false
+autowrap_mode = 3
+text = "供区 · 青色核心 / 绿色中继\n灰色区外 · 金色道路"
+[node name="Hint" type="Label" parent="HUD/Panel/Pad/Scroll/Body"]
+unique_name_in_owner = true
+autowrap_mode = 3
+custom_minimum_size = Vector2(0,58)
+[node name="Confirm" type="Button" parent="HUD/Panel/Pad/Scroll/Body"]
+mouse_filter = 1
+unique_name_in_owner = true
+text = "确认布局"
+[node name="Refresh" type="Button" parent="HUD/Panel/Pad/Scroll/Body"]
+mouse_filter = 1
+unique_name_in_owner = true
+text = "刷新布局"
+[node name="Freeze" type="Button" parent="HUD/Panel/Pad/Scroll/Body"]
+mouse_filter = 1
+unique_name_in_owner = true
+text = "保存布局留档"
+[node name="Snapshot" type="Button" parent="HUD/Panel/Pad/Scroll/Body"]
+mouse_filter = 1
+unique_name_in_owner = true
+text = "查看上次封存"
+[node name="Back" type="Button" parent="HUD/Panel/Pad/Scroll/Body"]
+mouse_filter = 1
+unique_name_in_owner = true
+text = "返回档案"
+
+[node name="PageRefresh" parent="." instance=ExtResource("page_refresh")]

@@ -1,0 +1,15 @@
+**
+!game/
+!game/net/
+!game/net/**
+!deploy/
+!deploy/server.godot
+!Dockerfile
+!game/battle/
+!game/battle/field.gd
+!game/battle/simulation.gd
+!game/loadout/
+!game/loadout/catalog.gd
+!game/loadout/rules.gd
+!game/expedition/
+!game/expedition/rail_sites.gd

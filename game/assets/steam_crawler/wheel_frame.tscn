@@ -1,0 +1,37 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="Bronze"]
+albedo_color = Color(0.518, 0.314, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="Rail"]
+material = SubResource("Bronze")
+size = Vector3(0.1, 0.1, 1.05)
+
+[sub_resource type="CylinderMesh" id="Axle"]
+material = SubResource("Bronze")
+top_radius = 0.065
+bottom_radius = 0.065
+height = 1.17
+radial_segments = 10
+rings = 0
+
+[node name="WheelFrame" type="Node3D"]
+
+[node name="LeftRail" type="MeshInstance3D" parent="."]
+position = Vector3(-0.29, 0.30, 0)
+mesh = SubResource("Rail")
+
+[node name="RightRail" type="MeshInstance3D" parent="."]
+position = Vector3(0.29, 0.30, 0)
+mesh = SubResource("Rail")
+
+[node name="FrontAxle" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.255, 0.48)
+rotation = Vector3(0, 0, 1.5707963)
+mesh = SubResource("Axle")
+
+[node name="RearAxle" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.34, -0.48)
+rotation = Vector3(0, 0, 1.5707963)
+mesh = SubResource("Axle")
+

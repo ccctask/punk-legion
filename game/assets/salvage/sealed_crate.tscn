@@ -1,0 +1,29 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="box"]
+albedo_color = Color(0.13,0.22,0.26,1)
+
+[sub_resource type="StandardMaterial3D" id="brass"]
+albedo_color = Color(0.83,0.52,0.19,1)
+
+[sub_resource type="BoxMesh" id="body"]
+material = SubResource("box")
+size = Vector3(1.1,0.74,0.9)
+
+[sub_resource type="BoxMesh" id="strap"]
+material = SubResource("brass")
+size = Vector3(0.09,0.77,0.94)
+
+[node name="SealedCrate" type="Node3D"]
+
+[node name="Chest" type="MeshInstance3D" parent="."]
+position = Vector3(0,0.38,0)
+mesh = SubResource("body")
+
+[node name="LeftBand" type="MeshInstance3D" parent="Chest"]
+position = Vector3(-0.33,0,0)
+mesh = SubResource("strap")
+
+[node name="RightBand" type="MeshInstance3D" parent="Chest"]
+position = Vector3(0.33,0,0)
+mesh = SubResource("strap")

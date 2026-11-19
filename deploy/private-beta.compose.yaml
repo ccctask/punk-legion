@@ -1,0 +1,6 @@
+services:
+  profile:
+    environment:
+      PUNK_TEST_PAYMENTS: "1"
+      BETA_PROTOCOL_MIN: "${BETA_PROTOCOL_MIN:-5}"
+      BETA_REQUIRE_PROTOCOL: "1"

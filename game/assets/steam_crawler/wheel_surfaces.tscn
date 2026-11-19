@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="Rubber"]
+albedo_color = Color(0.204, 0.239, 0.231, 1)
+roughness = 0.87
+
+[sub_resource type="StandardMaterial3D" id="Enamel"]
+albedo_color = Color(1, 0.914, 0.682, 1)
+
+[node name="RollingSurfaces" type="Node3D"]
+
+[node name="Tire" type="MeshInstance3D" parent="."]
+material_override = SubResource("Rubber")
+
+[node name="HubIndex" type="MeshInstance3D" parent="."]
+material_override = SubResource("Enamel")
+scale = Vector3(0.40, 0.29, 0.19)
+

@@ -1,0 +1,29 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://pump/landmark_mesh.gd" id="kit"]
+
+[sub_resource type="StandardMaterial3D" id="enamel"]
+albedo_color = Color(0.94, 0.70, 0.19, 1)
+metallic = 0.25
+roughness = 0.7
+
+[sub_resource type="BoxMesh" id="wing"]
+size = Vector3(0.25, 0.04, 0.12)
+material = SubResource("enamel")
+
+[node name="SalvageBee" type="Node3D"]
+
+[node name="RecoveryCoil" type="MeshInstance3D" parent="."]
+scale = Vector3(0.14, 0.15, 0.14)
+script = ExtResource("kit")
+module = "Coil"
+
+[node name="LeftWing" type="MeshInstance3D" parent="."]
+position = Vector3(-0.14, 0.17, 0.0)
+rotation = Vector3(0.0, -0.3, -0.25)
+mesh = SubResource("wing")
+
+[node name="RightWing" type="MeshInstance3D" parent="."]
+position = Vector3(0.14, 0.17, 0.0)
+rotation = Vector3(0.0, 0.3, 0.25)
+mesh = SubResource("wing")

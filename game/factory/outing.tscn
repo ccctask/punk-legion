@@ -1,0 +1,17 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://expedition/expedition.tscn" id="base"]
+[ext_resource type="Script" path="res://factory/outing.gd" id="script"]
+[ext_resource type="Script" path="res://factory/field.gd" id="field"]
+[ext_resource type="PackedScene" path="res://factory/freight_line.tscn" id="route"]
+
+[node name="FactoryOuting" instance=ExtResource("base")]
+script = ExtResource("script")
+use_network_motion = false
+
+[node name="Field" parent="." index="3"]
+script = ExtResource("field")
+
+[node name="FreightLine" parent="Field" instance=ExtResource("route")]
+
+[node name="FactoryMode" type="OptionButton" parent="HUD/Lobby/Scroll/Body" index="2"]
+unique_name_in_owner = true

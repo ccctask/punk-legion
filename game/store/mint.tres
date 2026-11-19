@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+
+[sub_resource type="Shader" id="Mint"]
+code = "shader_type spatial;
+render_mode diffuse_burley;
+void fragment() {
+	float shade = dot(COLOR.rgb, vec3(0.2126, 0.7152, 0.0722));
+	ALBEDO = mix(vec3(0.025, 0.23, 0.16), vec3(0.50, 0.98, 0.69), smoothstep(0.04, 0.72, shade));
+	ROUGHNESS = 0.66;
+	METALLIC = 0.11;
+}"
+
+[resource]
+shader = SubResource("Mint")

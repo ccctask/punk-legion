@@ -1,0 +1,192 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://factory/trolley.tscn" id="cart"]
+[ext_resource type="PackedScene" path="res://assets/base_art/HookGantry.tscn" id="gate"]
+[ext_resource type="PackedScene" path="res://assets/base_art/CoalFoundry.tscn" id="plant"]
+[sub_resource type="StandardMaterial3D" id="iron"]
+albedo_color = Color(0.25,0.33,0.33,1)
+metallic = 0.45
+roughness = 0.62
+[sub_resource type="StandardMaterial3D" id="brass"]
+albedo_color = Color(0.67,0.46,0.19,1)
+metallic = 0.45
+roughness = 0.62
+[sub_resource type="BoxMesh" id="rail"]
+size = Vector3(51,0.15,0.16)
+material = SubResource("iron")
+[sub_resource type="BoxMesh" id="sleeper"]
+size = Vector3(0.42,0.1,2.65)
+material = SubResource("brass")
+[sub_resource type="BoxMesh" id="post"]
+size = Vector3(0.45,3.4,0.55)
+material = SubResource("brass")
+[node name="FreightLine" type="Node3D"]
+
+[node name="NorthRail" type="MeshInstance3D" parent="."]
+position = Vector3(0,0.13,-0.88)
+mesh = SubResource("rail")
+
+
+[node name="SouthRail" type="MeshInstance3D" parent="."]
+position = Vector3(0,0.13,0.88)
+mesh = SubResource("rail")
+
+
+[node name="Sleeper1" type="MeshInstance3D" parent="."]
+position = Vector3(-25,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper2" type="MeshInstance3D" parent="."]
+position = Vector3(-23,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper3" type="MeshInstance3D" parent="."]
+position = Vector3(-21,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper4" type="MeshInstance3D" parent="."]
+position = Vector3(-19,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper5" type="MeshInstance3D" parent="."]
+position = Vector3(-17,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper6" type="MeshInstance3D" parent="."]
+position = Vector3(-15,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper7" type="MeshInstance3D" parent="."]
+position = Vector3(-13,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper8" type="MeshInstance3D" parent="."]
+position = Vector3(-11,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper9" type="MeshInstance3D" parent="."]
+position = Vector3(-9,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper10" type="MeshInstance3D" parent="."]
+position = Vector3(-7,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper11" type="MeshInstance3D" parent="."]
+position = Vector3(-5,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper12" type="MeshInstance3D" parent="."]
+position = Vector3(-3,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper13" type="MeshInstance3D" parent="."]
+position = Vector3(-1,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper14" type="MeshInstance3D" parent="."]
+position = Vector3(1,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper15" type="MeshInstance3D" parent="."]
+position = Vector3(3,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper16" type="MeshInstance3D" parent="."]
+position = Vector3(5,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper17" type="MeshInstance3D" parent="."]
+position = Vector3(7,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper18" type="MeshInstance3D" parent="."]
+position = Vector3(9,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper19" type="MeshInstance3D" parent="."]
+position = Vector3(11,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper20" type="MeshInstance3D" parent="."]
+position = Vector3(13,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper21" type="MeshInstance3D" parent="."]
+position = Vector3(15,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper22" type="MeshInstance3D" parent="."]
+position = Vector3(17,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper23" type="MeshInstance3D" parent="."]
+position = Vector3(19,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper24" type="MeshInstance3D" parent="."]
+position = Vector3(21,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper25" type="MeshInstance3D" parent="."]
+position = Vector3(23,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="Sleeper26" type="MeshInstance3D" parent="."]
+position = Vector3(25,0.05,0)
+mesh = SubResource("sleeper")
+
+
+[node name="CheckpointSignal" type="MeshInstance3D" parent="."]
+position = Vector3(0,1.7,-2)
+mesh = SubResource("post")
+
+
+[node name="CheckpointName" type="Label3D" parent="."]
+position = Vector3(0,4.1,-2)
+billboard = 1
+pixel_size = 0.015
+outline_size = 5
+text = "中段检查点"
+
+[node name="FactoryGate" instance=ExtResource("gate") parent="."]
+position=Vector3(24,0,-3.5)
+scale=Vector3(2,2,2)
+
+[node name="GateName" type="Label3D" parent="."]
+position = Vector3(24,5,-3)
+billboard = 1
+pixel_size = 0.015
+outline_size = 5
+text = "终点厂门"
+
+[node name="Foundry" instance=ExtResource("plant") parent="."]
+position=Vector3(25,0,-11)
+scale=Vector3(2,2,2)
+
+[node name="Trolley" instance=ExtResource("cart") parent="."]
+position=Vector3(-24,0,0)

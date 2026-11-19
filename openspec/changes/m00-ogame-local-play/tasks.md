@@ -1,0 +1,4 @@
+- [x] 独立 Docker 配置和新库安装
+- [x] 子代理自测及证据：工作区 .local/ogame/verification/self-test.md
+- [x] 主代理登录和核心页面独立验收：verification.md；金属矿1正常建造到期完成
+- [x] 记录资源并交付试玩入口：http://127.0.0.1:8097/；.local/ogame/README.md

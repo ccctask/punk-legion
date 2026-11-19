@@ -1,0 +1,66 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://pump/landmark_mesh.gd" id="KitMesh"]
+
+[sub_resource type="StandardMaterial3D" id="Enamel"]
+albedo_color = Color(0.08, 0.32, 0.33, 1)
+roughness = 0.76
+
+[sub_resource type="StandardMaterial3D" id="Ivory"]
+albedo_color = Color(0.95, 0.79, 0.51, 1)
+roughness = 0.6
+
+[sub_resource type="StandardMaterial3D" id="Copper"]
+albedo_color = Color(0.75, 0.38, 0.15, 1)
+roughness = 0.65
+
+[sub_resource type="CylinderMesh" id="Pole"]
+material = SubResource("Enamel")
+top_radius = 0.065
+bottom_radius = 0.11
+height = 0.78
+radial_segments = 10
+rings = 0
+
+[sub_resource type="BoxMesh" id="Crossbar"]
+material = SubResource("Copper")
+size = Vector3(0.89, 0.11, 0.16)
+
+[sub_resource type="CylinderMesh" id="Porcelain"]
+material = SubResource("Ivory")
+top_radius = 0.073
+bottom_radius = 0.128
+height = 0.095
+radial_segments = 12
+rings = 0
+
+[node name="PowerRelay" type="Node3D"]
+
+[node name="TransformerWindings" type="MeshInstance3D" parent="."]
+scale = Vector3(0.43, 0.43, 0.43)
+script = ExtResource("KitMesh")
+module = "Coil"
+
+[node name="Mast" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.62, 0)
+mesh = SubResource("Pole")
+
+[node name="Crossarm" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.02, 0)
+mesh = SubResource("Crossbar")
+
+[node name="LeftBushing" type="MeshInstance3D" parent="."]
+position = Vector3(-0.31, 1.12, 0)
+mesh = SubResource("Porcelain")
+
+[node name="Cap" type="MeshInstance3D" parent="LeftBushing"]
+position = Vector3(0, 0.08, 0)
+mesh = SubResource("Porcelain")
+
+[node name="RightBushing" type="MeshInstance3D" parent="."]
+position = Vector3(0.31, 1.12, 0)
+mesh = SubResource("Porcelain")
+
+[node name="Cap" type="MeshInstance3D" parent="RightBushing"]
+position = Vector3(0, 0.08, 0)
+mesh = SubResource("Porcelain")

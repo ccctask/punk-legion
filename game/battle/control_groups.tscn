@@ -1,0 +1,43 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://battle/control_groups.gd" id="1"]
+[node name="CustomGroups" type="HBoxContainer"]
+script = ExtResource("1")
+[node name="Edit" type="Button" parent="."]
+text = "编组"
+custom_minimum_size = Vector2(60,40)
+[node name="Recall1" type="Button" parent="."]
+custom_minimum_size = Vector2(84,40)
+clip_text = true
+[node name="Recall2" type="Button" parent="."]
+custom_minimum_size = Vector2(84,40)
+clip_text = true
+[node name="Editor" type="PopupPanel" parent="."]
+exclusive = true
+[node name="Body" type="VBoxContainer" parent="Editor"]
+[node name="Slot" type="OptionButton" parent="Editor/Body"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0,40)
+[node name="GroupName" type="LineEdit" parent="Editor/Body"]
+unique_name_in_owner = true
+placeholder_text = "组名"
+max_length = 6
+custom_minimum_size = Vector2(0,40)
+[node name="Scroll" type="ScrollContainer" parent="Editor/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+[node name="Roster" type="VBoxContainer" parent="Editor/Body/Scroll"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+[node name="Actions" type="HBoxContainer" parent="Editor/Body"]
+[node name="Clear" type="Button" parent="Editor/Body/Actions"]
+unique_name_in_owner = true
+text = "清空勾选"
+custom_minimum_size = Vector2(80,40)
+[node name="Cancel" type="Button" parent="Editor/Body/Actions"]
+unique_name_in_owner = true
+text = "取消"
+size_flags_horizontal = 3
+[node name="Save" type="Button" parent="Editor/Body/Actions"]
+unique_name_in_owner = true
+text = "保存"
+size_flags_horizontal = 3

@@ -1,0 +1,3 @@
+- [x] 1.1 冻结签发1021，验证签名、空库、包内 UI 和本机五路传输。见[签名](verification/signed.json)、[空库](verification/empty.json)、[包内资源及发布端点](verification/packaged.json)、[ENet 实连](verification/transport.log)及[资源交接](verification/handoff.json)。
+- [x] 1.2 验收新玩家、真实首胜解锁、安卓确认与到账、刷新重复领取受限；核实仅扣一次、战绩配方不变。见[安卓与逐次账本](verification/android/README.md)。
+- [x] 1.3 主代理独立核对场次与收据并验收切换，更新文档，释放模拟器和旧候选。见[独立主验](verification/root-acceptance.md)。

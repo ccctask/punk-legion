@@ -1,0 +1,42 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="PunkLegion"
+config/icon="res://client/steam_crawler.webp"
+run/main_scene="res://client/range.tscn"
+run/main_scene.android="res://beta/entry.tscn"
+config/features=PackedStringArray("4.6", "GL Compatibility")
+
+[autoload]
+
+Room="*res://net/room.gd"
+Solo="*res://net/solo.gd"
+Party="*res://net/party.gd"
+Camp="*res://net/camp.gd"
+Treasure="*res://net/treasure.gd"
+
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
+window/size/window_width_override=960
+window/size/window_height_override=540
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/quality/msaa_3d=1
+shader_compiler/shader_cache/enabled.debug=false
+textures/vram_compression/import_etc2_astc=true

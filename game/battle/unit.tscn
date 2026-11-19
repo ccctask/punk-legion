@@ -1,0 +1,52 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://battle/unit.gd" id="1"]
+[ext_resource type="PackedScene" path="res://assets/steam_crawler/robot.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://battle/motion_track.tscn" id="motion"]
+
+[sub_resource type="TorusMesh" id="ring"]
+inner_radius=0.42
+outer_radius=0.49
+rings=24
+ring_segments=4
+
+[sub_resource type="BoxMesh" id="box"]
+
+[node name="Fighter" type="Node3D"]
+script=ExtResource("1")
+
+[node name="MotionTrack" parent="." instance=ExtResource("motion")]
+
+[node name="Robot" parent="." instance=ExtResource("2")]
+scale=Vector3(0.58,0.58,0.58)
+
+[node name="Ring" type="MeshInstance3D" parent="."]
+position=Vector3(0,0.1,0)
+mesh=SubResource("ring")
+
+[node name="Health" type="MeshInstance3D" parent="."]
+position=Vector3(0,1.3,0)
+scale=Vector3(0.8,0.09,0.09)
+mesh=SubResource("box")
+
+[node name="Shot" type="MeshInstance3D" parent="."]
+visible=false
+mesh=SubResource("box")
+cast_shadow=0
+
+[node name="OwnedName" type="Label3D" parent="."]
+position=Vector3(0,2.05,0)
+billboard=1
+visible=false
+fixed_size=true
+pixel_size=0.0014
+font_size=24
+outline_size=6
+[node name="Interference" type="Label3D" parent="."]
+position=Vector3(0,3.15,0)
+billboard=1
+visible=false
+fixed_size=true
+pixel_size=0.00125
+font_size=21
+outline_size=6

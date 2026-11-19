@@ -1,0 +1,56 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://client/page_refresh.tscn" id="page_refresh"]
+[ext_resource type="Script" path="res://base/platform.gd" id="1"]
+[sub_resource type="SystemFont" id="font"]
+font_names=PackedStringArray("Microsoft YaHei UI","Noto Sans CJK SC","sans-serif")
+[sub_resource type="Theme" id="theme"]
+default_font=SubResource("font")
+default_font_size=20
+[node name="DefensePlatform" type="CanvasLayer"]
+layer=8
+script=ExtResource("1")
+[node name="Background" type="ColorRect" parent="."]
+anchor_right=1.0
+anchor_bottom=1.0
+color=Color(0.056,0.107,0.113,1)
+theme=SubResource("theme")
+[node name="Scroll" type="ScrollContainer" parent="Background"]
+anchor_left=0.08
+anchor_top=0.05
+anchor_right=0.93
+anchor_bottom=0.96
+horizontal_scroll_mode=0
+[node name="Column" type="VBoxContainer" parent="Background/Scroll"]
+size_flags_horizontal=3
+theme_override_constants/separation=10
+[node name="Title" type="Label" parent="Background/Scroll/Column"]
+text="私人基地 · 防御平台"
+theme_override_font_sizes/font_size=30
+[node name="Mounted" type="Label" parent="Background/Scroll/Column"]
+unique_name_in_owner=true
+autowrap_mode=3
+[node name="Parts" type="OptionButton" parent="Background/Scroll/Column"]
+unique_name_in_owner=true
+[node name="Status" type="Label" parent="Background/Scroll/Column"]
+unique_name_in_owner=true
+autowrap_mode=3
+[node name="Install" type="Button" parent="Background/Scroll/Column"]
+unique_name_in_owner=true
+text="安装选中部件"
+[node name="Detach" type="Button" parent="Background/Scroll/Column"]
+unique_name_in_owner=true
+text="拆下原件并归还背包"
+[node name="Remove" type="Button" parent="Background/Scroll/Column"]
+unique_name_in_owner=true
+text="移除平台并归还原件"
+[node name="Refresh" type="Button" parent="Background/Scroll/Column"]
+unique_name_in_owner=true
+text="刷新装备"
+[node name="Back" type="Button" parent="Background/Scroll/Column"]
+unique_name_in_owner=true
+text="返回基地"
+[node name="HTTP" type="HTTPRequest" parent="."]
+timeout=6
+
+[node name="PageRefresh" parent="." instance=ExtResource("page_refresh")]

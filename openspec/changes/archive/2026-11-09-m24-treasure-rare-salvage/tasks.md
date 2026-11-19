@@ -1,0 +1,3 @@
+- [x] 1.1 服务端个人打捞、按日限次、满仓保底、幂等及库存事务。 [服务回归](verification/service/README.md)
+- [x] 1.2 Godot 整备与结算使用实际报价、结果和进度，小屏可读。[800×450 窗口实测](verification/ui/README.md)
+- [x] 1.3 新库独立验收真实带货撤离、持有且能装配、空手和重复结算、资料索引。 [主验记录](verification/root-review.md)

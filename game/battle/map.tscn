@@ -1,0 +1,153 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://battle/switchyard_deck.tscn" id="deck"]
+
+[sub_resource type="StandardMaterial3D" id="iron"]
+albedo_color = Color(0.18, 0.29, 0.30, 1)
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="box_iron"]
+material = SubResource("iron")
+
+[sub_resource type="StandardMaterial3D" id="brass"]
+albedo_color = Color(0.89, 0.63, 0.29, 1)
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="box_brass"]
+material = SubResource("brass")
+
+[sub_resource type="StandardMaterial3D" id="ceramic"]
+albedo_color = Color(0.68, 0.78, 0.65, 1)
+roughness = 0.95
+
+[sub_resource type="StandardMaterial3D" id="rust"]
+albedo_color = Color(0.72, 0.38, 0.24, 1)
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="box_rust"]
+material = SubResource("rust")
+
+[sub_resource type="CylinderMesh" id="insulator"]
+material = SubResource("ceramic")
+top_radius = 0.27
+bottom_radius = 0.20
+height = 0.3
+radial_segments = 12
+
+[node name="Switchyard" instance=ExtResource("deck")]
+
+[node name="Generator0" type="MeshInstance3D" parent="."]
+position = Vector3(-4.5,0.52,-1)
+scale = Vector3(2,0.98,5)
+mesh = SubResource("box_iron")
+
+[node name="Cover0" type="MeshInstance3D" parent="."]
+position = Vector3(-4.5,1.05,-1)
+scale = Vector3(2.07,0.15,5.07)
+mesh = SubResource("box_rust")
+
+[node name="Louvre00" type="MeshInstance3D" parent="."]
+position = Vector3(-4.95,1.14,-1)
+scale = Vector3(0.09,0.06,4.55)
+mesh = SubResource("box_brass")
+
+[node name="Louvre01" type="MeshInstance3D" parent="."]
+position = Vector3(-4.5,1.14,-1)
+scale = Vector3(0.09,0.06,4.55)
+mesh = SubResource("box_brass")
+
+[node name="Louvre02" type="MeshInstance3D" parent="."]
+position = Vector3(-4.05,1.14,-1)
+scale = Vector3(0.09,0.06,4.55)
+mesh = SubResource("box_brass")
+
+[node name="Isolator0" type="MeshInstance3D" parent="."]
+position = Vector3(-4.5,1.3,-2.666666666666667)
+mesh = SubResource("insulator")
+
+[node name="Generator1" type="MeshInstance3D" parent="."]
+position = Vector3(4.5,0.52,1)
+scale = Vector3(2,0.98,5)
+mesh = SubResource("box_iron")
+
+[node name="Cover1" type="MeshInstance3D" parent="."]
+position = Vector3(4.5,1.05,1)
+scale = Vector3(2.07,0.15,5.07)
+mesh = SubResource("box_rust")
+
+[node name="Louvre10" type="MeshInstance3D" parent="."]
+position = Vector3(4.05,1.14,1)
+scale = Vector3(0.09,0.06,4.55)
+mesh = SubResource("box_brass")
+
+[node name="Louvre11" type="MeshInstance3D" parent="."]
+position = Vector3(4.5,1.14,1)
+scale = Vector3(0.09,0.06,4.55)
+mesh = SubResource("box_brass")
+
+[node name="Louvre12" type="MeshInstance3D" parent="."]
+position = Vector3(4.95,1.14,1)
+scale = Vector3(0.09,0.06,4.55)
+mesh = SubResource("box_brass")
+
+[node name="Isolator1" type="MeshInstance3D" parent="."]
+position = Vector3(4.5,1.3,-0.6666666666666667)
+mesh = SubResource("insulator")
+
+[node name="Generator2" type="MeshInstance3D" parent="."]
+position = Vector3(0,0.52,-5.5)
+scale = Vector3(3,0.98,2)
+mesh = SubResource("box_iron")
+
+[node name="Cover2" type="MeshInstance3D" parent="."]
+position = Vector3(0,1.05,-5.5)
+scale = Vector3(3.07,0.15,2.07)
+mesh = SubResource("box_rust")
+
+[node name="Louvre20" type="MeshInstance3D" parent="."]
+position = Vector3(-0.45,1.14,-5.5)
+scale = Vector3(0.09,0.06,1.55)
+mesh = SubResource("box_brass")
+
+[node name="Louvre21" type="MeshInstance3D" parent="."]
+position = Vector3(0,1.14,-5.5)
+scale = Vector3(0.09,0.06,1.55)
+mesh = SubResource("box_brass")
+
+[node name="Louvre22" type="MeshInstance3D" parent="."]
+position = Vector3(0.45,1.14,-5.5)
+scale = Vector3(0.09,0.06,1.55)
+mesh = SubResource("box_brass")
+
+[node name="Isolator2" type="MeshInstance3D" parent="."]
+position = Vector3(0,1.3,-6.166666666666667)
+mesh = SubResource("insulator")
+
+[node name="Generator3" type="MeshInstance3D" parent="."]
+position = Vector3(0,0.52,5.5)
+scale = Vector3(3,0.98,2)
+mesh = SubResource("box_iron")
+
+[node name="Cover3" type="MeshInstance3D" parent="."]
+position = Vector3(0,1.05,5.5)
+scale = Vector3(3.07,0.15,2.07)
+mesh = SubResource("box_rust")
+
+[node name="Louvre30" type="MeshInstance3D" parent="."]
+position = Vector3(-0.45,1.14,5.5)
+scale = Vector3(0.09,0.06,1.55)
+mesh = SubResource("box_brass")
+
+[node name="Louvre31" type="MeshInstance3D" parent="."]
+position = Vector3(0,1.14,5.5)
+scale = Vector3(0.09,0.06,1.55)
+mesh = SubResource("box_brass")
+
+[node name="Louvre32" type="MeshInstance3D" parent="."]
+position = Vector3(0.45,1.14,5.5)
+scale = Vector3(0.09,0.06,1.55)
+mesh = SubResource("box_brass")
+
+[node name="Isolator3" type="MeshInstance3D" parent="."]
+position = Vector3(0,1.3,4.833333333333333)
+mesh = SubResource("insulator")

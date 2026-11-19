@@ -1,0 +1,3 @@
+- [x] 1.1 Expose a stable server-owned site identity from actual room admission through reconnect and wire into the Godot scene. [权威与界面绑定](verification/binding/README.md)
+- [x] 1.2 Build three distinct editable toy dioramas from verified asset releases and review both mobile sizes and comparative render cost.
+- [x] 1.3 Independently verify site binding, artwork against the original and a two-client network extraction before archiving. [主验](verification/root-review.md)
